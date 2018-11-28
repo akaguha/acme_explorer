@@ -42,3 +42,41 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
+
+# Dependencies
+Following dependencies need to be installed before proceeding
+- Ubuntu 16.04
+- ROS Kinetic
+- Gazebo version 7.0.0 or above
+- RViz
+- Catkin
+- Turtlebot packages
+Run the following command to install turtlebot packages
+```
+sudo apt-get install ros-kinetic-turtlebot-*
+```
+
+## Solo Iterative Process
+
+SIP is a software process that single programmers use while working on a software project. The solo programmer who is the hero of this process is named “Sol”. Sol receives the requirements from the users and records them in the product backlog. From the iteration backlog, Sol selects a specific change request and implements the corresponding software changes. 
+
+Product Backlog, Work log, Iteration log and Defect log for this project can be found [here][reference-id-for-here1].
+
+The sprint planning notes can be viewed [here][reference-id-for-here2].
+
+[reference-id-for-here1]: https://docs.google.com/spreadsheets/d/1DluQNZ4hPmuc6m9_1VbXkiNKjYlFCkAW2cCV9fm4xiM/edit?usp=sharing
+[reference-id-for-here2]: https://docs.google.com/document/d/1Q8z-YIIRtX_Bhl94cPWdnv7DTf7MGm8ksgNLWIYC4Qo/edit?usp=sharing
+
+# Operation
+
+# Build Instructions
+
+# Run Instructions
+
+# Test Instructions
+
+# Demo Instructions
+
+# Known Issues/Bugs
+
+# API and Other Developer Documentation 
