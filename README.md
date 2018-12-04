@@ -79,4 +79,7 @@ The sprint planning notes can be viewed [here][reference-id-for-here2].
 
 # Known Issues/Bugs
 
-# API and Other Developer Documentation 
+# API and Other Developer Documentation
+
+# About Me
+I am a second-year graduate student, majoring in Robotics at University of Maryland College Park. I completed my undergraduation in Electronics and Telecommunication from University of Pune, India in May 2013. Since then I have worked as an Application Development Analyst at Accenture India for 3 years followed by 6 months as a Robotics Engineer at Cereble Robotics, India. My areas of interest are Robotics, Machine Learning, Deep Learning and Computer Vision.
