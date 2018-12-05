@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="acme_explorer" name="" type="" />
+  <test pkg="acme_explorer" test-name="AcmeExplorerTest" type="AcmeExplorerUtest" />
+</launch>
