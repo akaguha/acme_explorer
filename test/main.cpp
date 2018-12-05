@@ -55,7 +55,7 @@
  * @return status of the program as int, returns 0 is all tests pass
  */
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "AcmeExplorerTest");  //  Initialize the node
+  ros::init(argc, argv, "acmeExplorerTest");  //  Initialize the node
   ros::NodeHandle nh;  //  Create a node handle
   testing::InitGoogleTest(&argc, argv);
   //  Run all the declared tests with TEST()

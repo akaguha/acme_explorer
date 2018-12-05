@@ -198,6 +198,29 @@ add_executable(acmeExplorer src/main.cpp src/AcmeExplorer.cpp src/Navigate.cpp s
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
+  add_rostest_gtest(
+  acmeExplorerTest
+  test/AcmeExplorerTest.launch
+  test/main.cpp
+  test/NavigateTest.cpp
+  test/ViewImageTest.cpp
+  src/Navigate.cpp
+  src/ViewImage.cpp
+  src/AcmeExplorer.cpp
+  )
+  target_link_libraries(
+  acmeExplorerTest
+  ${catkin_LIBRARIES}
+  )
+  add_dependencies(
+  acmeExplorerTest
+  acmeExplorer
+  ${catkin_EXPORTED_TARGETS}
+  )
+endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)

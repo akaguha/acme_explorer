@@ -45,7 +45,7 @@
 
 #include <ros/ros.h>
 #include <gtest/gtest.h>
-#include "../include/ViewImage.hpp"
+#include "ViewImage.hpp"
 
 /**
 *  @brief Testing if the node is initialized correctly 
@@ -86,12 +86,12 @@ TEST(ImgTest, picSavedCheck) {
   EXPECT_EQ(returnVal, true);
 }
 
-/**
-*  @brief Test to check the video playback 
-*/
-TEST(ImgTest, imgCallBackCheck) {
-  //  Create
-  ViewImage imgView;
-  //  Act
-  //  Assert
-}
+// /**
+// *  @brief Test to check the video playback 
+// */
+// TEST(ImgTest, imgCallBackCheck) {
+//   //  Create
+//   ViewImage imgView;
+//   //  Act
+//   //  Assert
+// }

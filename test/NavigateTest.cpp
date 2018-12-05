@@ -45,7 +45,7 @@
 
 #include <ros/ros.h>
 #include <gtest/gtest.h>
-#include "../include/Navigate.hpp"
+#include "Navigate.hpp"
 
 /**
 *  @brief Testing if the node is initialized correctly 
@@ -72,37 +72,37 @@ TEST(NavTest, obsDetectedTest) {
   EXPECT_EQ(returnVal, true);
 }
 
-/**
-*  @brief Test to check if linear velocity is set correctly
-*/
-TEST(NavTest, moveForwardTest) {
-  //  Create
-  Navigate nav;
-  //  Act
-  nav.moveForward();
-  //  Assert
-  EXPECT_EQ(, true);
-}
+// /**
+// *  @brief Test to check if linear velocity is set correctly
+// */
+// TEST(NavTest, moveForwardTest) {
+//   //  Create
+//   Navigate nav;
+//   //  Act
+//   nav.moveForward();
+//   //  Assert
+//   EXPECT_EQ(, true);
+// }
 
-/**
-*  @brief Test to check if teh angular velocity is set correctly
-*/
-TEST(NavTest, turnTest) {
-  //  Create
-  Navigate nav;
-  //  Act
-  nav.turn();
-  //  Assert
-  EXPECT_EQ(, true);
-}
+// *
+// *  @brief Test to check if teh angular velocity is set correctly
 
-/**
-*  @brief Test to check the explore behavior of the robot
-*/
-TEST(NavTest, exploreTest) {
-  //  Create
-  Navigate nav;
-  //  Act
-  //  Assert
+// TEST(NavTest, turnTest) {
+//   //  Create
+//   Navigate nav;
+//   //  Act
+//   nav.turn();
+//   //  Assert
+//   EXPECT_EQ(, true);
+// }
 
-}
+// /**
+// *  @brief Test to check the explore behavior of the robot
+// */
+// TEST(NavTest, exploreTest) {
+//   //  Create
+//   Navigate nav;
+//   //  Act
+//   //  Assert
+
+// }

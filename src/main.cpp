@@ -44,8 +44,6 @@
 *
 */
 
-#include <iostream>
-#include <ros/ros.h>
 #include "AcmeExplorer.hpp"
 
 /**
@@ -56,6 +54,9 @@
  *
  * @return status of the program as int
  */
-int main(){
+int main(int argc, char **argv){
+  ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
+  //  Create a AcmeExplorer class object
+  AcmeExplorer bot();
   return 0;
 };
