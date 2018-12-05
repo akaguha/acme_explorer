@@ -47,6 +47,7 @@
 
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
+#include <ros/ros.h>
 
 /**
  * @brief  Navigate class for autonomous navigation and obstacle avoidance
@@ -54,8 +55,8 @@
 class Navigate {
  private:
   //  Flags to check the status
-  bool navCheckFlag;
-  bool obsDetectedFlag;
+  bool navCheckFlag = false;
+  bool obsDetectedFlag = false;
   geometry_msgs::Twist velocityInput;  //  Velocity values to be published to the bot
   ros::Publisher velPub;  //  Publisher for turtlebot's velocity topic
   ros::Subscriber scanSub;  //  Subscriber for laser scanner sensor

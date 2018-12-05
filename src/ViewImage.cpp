@@ -53,7 +53,9 @@
 *   @return nothing
 */
 ViewImage::ViewImage(){
+  ROS_INFO("Initializing the ViewImage object");
 
+  setcamCheckFlag();
 }
 
 /**
@@ -73,7 +75,11 @@ ViewImage::~ViewImage(){
 *   @return true or false
 */
 bool ViewImage::getcamCheckFlag(){
-
+  if (camCheckFlag == true) {
+  	return true;
+  } else {
+  	false;
+  }
 }
 
 /**
@@ -83,7 +89,7 @@ bool ViewImage::getcamCheckFlag(){
 *   @return nothing
 */
 void ViewImage::setcamCheckFlag(){
-
+  camCheckFlag = true;
 }
 
 /**
@@ -93,7 +99,11 @@ void ViewImage::setcamCheckFlag(){
 *   @return true or false
 */
 bool ViewImage::getimgReceivedFlag(){
-
+  if (imgReceivedFlag == true) {
+  	return true;
+  } else {
+  	false;
+  }
 }
 
 /**
@@ -103,7 +113,7 @@ bool ViewImage::getimgReceivedFlag(){
 *   @return nothing
 */
 void ViewImage::setimgReceivedFlag(){
-
+  imgReceivedFlag = true;
 }
 
 /**
@@ -113,7 +123,11 @@ void ViewImage::setimgReceivedFlag(){
 *   @return true or false
 */
 bool ViewImage::getpicSavedFlag(){
-
+  if (picSavedFlag == true) {
+  	return true;
+  } else {
+  	false;
+  }
 }
 
 /**
@@ -123,7 +137,7 @@ bool ViewImage::getpicSavedFlag(){
 *   @return nothing
 */
 void ViewImage::setpicSavedFlag(){
-
+  picSavedFlag = true;
 }
 
 /**

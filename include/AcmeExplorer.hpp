@@ -55,7 +55,7 @@
  */
 class AcmeExplorer {
  private:
-  bool botCheckFlag;  //  Flag to check the robot status
+  bool botCheckFlag = false;  //  Flag to check the robot status
   ros::NodeHandle nH;  //  Create a node handle
  public:
   /**

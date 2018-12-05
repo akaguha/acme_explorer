@@ -54,6 +54,8 @@
 */
 Navigate::Navigate(){
   ROS_INFO("Initializing the navigate object");
+  
+  setnavCheckFlag();
 }
 
 /**
@@ -84,7 +86,7 @@ void Navigate::scanCallBack(const sensor_msgs::LaserScan::ConstPtr& scan){
 *   @return nothing
 */
 void Navigate::setnavCheckFlag(){
-
+  navCheckFlag = true;
 }
 
 /**
@@ -94,7 +96,11 @@ void Navigate::setnavCheckFlag(){
 *   @return true or false
 */
 bool Navigate::getnavCheckFlag(){
-
+  if (navCheckFlag == true) {
+    return true;
+  } else {
+  	return false;
+  }
 }
 
 /**
@@ -104,7 +110,7 @@ bool Navigate::getnavCheckFlag(){
 *   @return nothing
 */
 void Navigate::setobsDetectedFlag(){
-
+  obsDetectedFlag = true;
 }
 
 /**
@@ -114,7 +120,11 @@ void Navigate::setobsDetectedFlag(){
 *   @return true or false
 */
 bool Navigate::getobsDetectedFlag(){
-
+  if (obsDetectedFlag == true) {
+    return true;
+  } else {
+  	return false;
+  }
 }
 
 /**

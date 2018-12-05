@@ -51,6 +51,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/Image.h>
+#include <ros/ros.h>
 #include <string>
 
 /**
@@ -59,9 +60,9 @@
 class ViewImage {
  private:
   //  Flags to check the status
-  bool camCheckFlag;
-  bool imgReceivedFlag;
-  bool picSavedFlag;
+  bool camCheckFlag = false;
+  bool imgReceivedFlag = false;
+  bool picSavedFlag = false;
   ros::Subscriber imageSub;  //  Subscriber to the image topic to get pictures
   std::string imgTitle;  //  Save picture with this file name
  public:

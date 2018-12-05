@@ -53,7 +53,9 @@
 *   @return nothing
 */
 AcmeExplorer::AcmeExplorer(){
+  ROS_INFO("Initializing the bot object");
 
+  setbotCheckFlag();
 }
 
 /**
@@ -73,7 +75,11 @@ AcmeExplorer::~AcmeExplorer(){
 *   @return true or flase based on the bot's status
 */
 bool AcmeExplorer::getbotCheckFlag(){
-
+  if (botCheckFlag == true) {
+  	return true;
+  } else {
+  	return false;
+  }
 }
 
 /**
@@ -83,5 +89,5 @@ bool AcmeExplorer::getbotCheckFlag(){
 *   @return nothing
 */
 void AcmeExplorer::setbotCheckFlag(){
-	
+  botCheckFlag = true;	
 }
