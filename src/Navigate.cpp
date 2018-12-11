@@ -46,55 +46,25 @@
 
 #include "Navigate.hpp"
 
-/**
-*   @brief Default constructor for Navigate class
-*
-*   @param nothing
-*   @return nothing
-*/
 Navigate::Navigate(){
   ROS_INFO("Initializing the navigate object");
-  
+  velLinear = 0.1;
+  velAngular = 0.5;
   setnavCheckFlag();
 }
 
-/**
-*   @brief Default destructor for Navigate class
-*
-*   @param nothing
-*   @return nothing
-*/
 Navigate::~Navigate(){
 
 }
 
-/**
-*   @brief Callback function that will get called when a new laser 
-*   scan data is available 
-*
-*   @param Pointer to the laser scan data received on sensor_msgs topic
-*   @return void
-*/
 void Navigate::scanCallBack(const sensor_msgs::LaserScan::ConstPtr& scan){
 	
 }
 
-/**
-*   @brief Function to set navigation status flag
-*
-*   @param nothing
-*   @return nothing
-*/
 void Navigate::setnavCheckFlag(){
   navCheckFlag = true;
 }
 
-/**
-*   @brief Function to check navigation node status
-*
-*   @param nothing
-*   @return true or false
-*/
 bool Navigate::getnavCheckFlag(){
   if (navCheckFlag == true) {
     return true;
@@ -103,22 +73,10 @@ bool Navigate::getnavCheckFlag(){
   }
 }
 
-/**
-*   @brief Function to set obstacle detected flag
-*
-*   @param nothing
-*   @return nothing
-*/
 void Navigate::setobsDetectedFlag(){
   obsDetectedFlag = true;
 }
 
-/**
-*   @brief Function to check obstacle detected flag
-*
-*   @param nothing
-*   @return true or false
-*/
 bool Navigate::getobsDetectedFlag(){
   if (obsDetectedFlag == true) {
     return true;
@@ -127,32 +85,16 @@ bool Navigate::getobsDetectedFlag(){
   }
 }
 
-/**
-*   @brief Function to explore the unknown environment
-*
-*   @param nothing
-*   @return void
-*/
 void Navigate::explore(){
 
 }
 
-/**
-*   @brief Function to command the bot to move forward
-*
-*   @param nothing
-*   @return void
-*/
 void Navigate::moveForward(){
-
+  velocityInput.linear.x = velLinear;
+  velocityinput.angular.z = 0.0;
 }
 
-/**
-*   @brief Function to command the bot to keep rotating
-*
-*   @param nothing
-*   @return void
-*/
 void Navigate::turn(){
-
+  velocityInput.linear.x = 0.0;
+  velocityinput.angular.z = velAngular;
 }

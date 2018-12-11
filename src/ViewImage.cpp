@@ -46,34 +46,16 @@
 
 #include "ViewImage.hpp"
 
-/**
-*   @brief Default constructor for ViewImage class
-*
-*   @param nothing
-*   @return nothing
-*/
 ViewImage::ViewImage(){
   ROS_INFO("Initializing the ViewImage object");
 
   setcamCheckFlag();
 }
 
-/**
-*   @brief Default destructor for ViewImage class
-*
-*   @param nothing
-*   @return nothing
-*/
 ViewImage::~ViewImage(){
 
 }
 
-/**
-*   @brief Function to check camera status
-*
-*   @param nothing
-*   @return true or false
-*/
 bool ViewImage::getcamCheckFlag(){
   if (camCheckFlag == true) {
   	return true;
@@ -82,22 +64,10 @@ bool ViewImage::getcamCheckFlag(){
   }
 }
 
-/**
-*   @brief Function to set camera status flag
-*
-*   @param nothing
-*   @return nothing
-*/
 void ViewImage::setcamCheckFlag(){
   camCheckFlag = true;
 }
 
-/**
-*   @brief Function to check status of received image
-*
-*   @param nothing
-*   @return true or false
-*/
 bool ViewImage::getimgReceivedFlag(){
   if (imgReceivedFlag == true) {
   	return true;
@@ -106,22 +76,10 @@ bool ViewImage::getimgReceivedFlag(){
   }
 }
 
-/**
-*   @brief Function to set received image status
-*
-*   @param nothing
-*   @return nothing
-*/
 void ViewImage::setimgReceivedFlag(){
   imgReceivedFlag = true;
 }
 
-/**
-*   @brief Function to check status of saved picture
-*
-*   @param nothing
-*   @return true or false
-*/
 bool ViewImage::getpicSavedFlag(){
   if (picSavedFlag == true) {
   	return true;
@@ -130,33 +88,14 @@ bool ViewImage::getpicSavedFlag(){
   }
 }
 
-/**
-*   @brief Function to set saved picture status
-*
-*   @param nothing
-*   @return nothing
-*/
 void ViewImage::setpicSavedFlag(){
   picSavedFlag = true;
 }
 
-/**
-*   @brief Callback function that will get called when a new 
-*   image has arrived on the "camera/image" topic
-*
-*   @param Pointer to the image data received on sensor_msgs topic
-*   @return void
-*/
 void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img){
 
 }
 
-/**
-*   @brief Function to click a picture when the click service is called 
-*
-*   @param file name as string
-*   @return void
-*/
 void ViewImage::takePic(std::string imgTitle){
 	
 }

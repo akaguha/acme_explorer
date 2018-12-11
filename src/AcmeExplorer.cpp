@@ -46,34 +46,16 @@
 
 #include "AcmeExplorer.hpp"
 
-/**
-*   @brief Default constructor for AcmeExplorer class
-*
-*   @param nothing
-*   @return nothing
-*/
 AcmeExplorer::AcmeExplorer(){
   ROS_INFO("Initializing the bot object");
 
   setbotCheckFlag();
 }
 
-/**
-*   @brief Default destructor for AcmeExplorer class
-*
-*   @param nothing
-*   @return nothing
-*/
 AcmeExplorer::~AcmeExplorer(){
 
 }
 
-/**
-*   @brief Function to get the robot's status
-*
-*   @param nothing
-*   @return true or flase based on the bot's status
-*/
 bool AcmeExplorer::getbotCheckFlag(){
   if (botCheckFlag == true) {
   	return true;
@@ -82,12 +64,6 @@ bool AcmeExplorer::getbotCheckFlag(){
   }
 }
 
-/**
-*   @brief Function to set the status flag
-*
-*   @param nothing
-*   @return nothing
-*/
 void AcmeExplorer::setbotCheckFlag(){
   botCheckFlag = true;	
 }

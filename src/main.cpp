@@ -47,12 +47,10 @@
 #include "AcmeExplorer.hpp"
 
 /**
- * @brief  main function
- *
- * @param  count of arguments as argc
- *         argument vector as argv
- *
- * @return status of the program as int
+ * @brief    main function
+ * @param    argc int
+ * @param    argv char array
+ * @return   0 if the main executes properly
  */
 int main(int argc, char **argv){
   ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
