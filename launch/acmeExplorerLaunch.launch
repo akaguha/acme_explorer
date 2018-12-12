@@ -1,0 +1,18 @@
+<launch>
+  <arg name="record_bag" default="false"/>
+
+  <node
+    pkg="acme_explorer"
+    name="acmeExplorer"
+    type="acmeExplorer"
+    output = "screen"
+  />
+
+  <node
+    pkg="rosbag"
+    name="record"
+    type="record"
+    args="-a -O $(find turtlebot-walker)/results/rosbagRecordings.bag -x /camera/(.*)"
+    if="$(arg record_bag)"
+  />
+</launch>
