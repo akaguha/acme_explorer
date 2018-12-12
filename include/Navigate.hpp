@@ -56,12 +56,15 @@ class Navigate {
  private:
   //  Flags to check the status
   bool navCheckFlag = false;
-  bool obsDetectedFlag = false;
+  bool obsDetectedFlag;
   geometry_msgs::Twist velocityInput;  //  Velocity values to be published to the bot
   ros::Publisher velPub;  //  Publisher for turtlebot's velocity topic
   ros::Subscriber scanSub;  //  Subscriber for laser scanner sensor
   double velLinear;  //  linera velocity
   double velAngular;  //  angular velocity
+  float minDist; //= 0.7;  //  Stores the threshold distance from obstacle
+  float scanData;  //  Stores data from turtlebot's laser scanner
+  float dist;
  public:
   /**
    *   @brief Default constructor for Navigate class
@@ -69,7 +72,7 @@ class Navigate {
    *   @param nothing
    *   @return nothing
    */
-  Navigate();
+  Navigate(ros::NodeHandle& nh);
   /**
    *   @brief Default destructor for Navigate class
    *
@@ -134,6 +137,13 @@ class Navigate {
    *   @return void
    */
   void scanCallBack(const sensor_msgs::LaserScan::ConstPtr& scan);
+  /**
+   *   @brief  Function to set or clear the obstacle flag
+   *
+   *   @param  none
+   *   @return void
+   */
+  bool obstacleDetected();
 
 };
 

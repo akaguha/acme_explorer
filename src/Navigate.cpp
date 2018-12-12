@@ -46,19 +46,44 @@
 
 #include "Navigate.hpp"
 
-Navigate::Navigate(){
+Navigate::Navigate(ros::NodeHandle& nh){
   ROS_INFO("Initializing the navigate object");
   velLinear = 0.1;
   velAngular = 0.5;
+  obsDetectedFlag = false;
+  scanData = 0.0;
+  minDist = 0.7;
+  //  Setting up a velocity publisher with the master
+  velPub = nh.advertise <geometry_msgs::Twist>
+  ("/mobile_base/commands/velocity", 1000);
+  //  Setting up a laser scanner subscriber with the master
+  scanSub = nh.subscribe <sensor_msgs::LaserScan>
+  ("/scan", 100, &Navigate::scanCallBack, this);
+  //  Initializing the robot with zero velocity
+  velocityInput.linear.x = 0.0;
+  velocityInput.angular.z = 0.0;
+  velPub.publish(velocityInput);
   setnavCheckFlag();
 }
 
 Navigate::~Navigate(){
-
+  //  Stopping the robot
+  velocityInput.linear.x = 0.0;
+  velocityInput.angular.z = 0.0;
+  velPub.publish(velocityInput);
 }
 
 void Navigate::scanCallBack(const sensor_msgs::LaserScan::ConstPtr& scan){
-	
+  dist = minDist;  //  Initialize dist with threshold distance value
+  //int sz = scan->ranges.size();  //  Stores the size of laser scan array
+  for (int i = 0; i < scan->ranges.size(); i++) {
+    scanData = scan->ranges[i];  //  Stores the laser scan data
+    //  Based on the received data assigning value to dist variable
+    if (scanData < dist) {
+      dist = scanData;
+      ROS_WARN_STREAM("Distance " << dist << " less than the threshold value");
+    }
+  }	
 }
 
 void Navigate::setnavCheckFlag(){
@@ -86,15 +111,44 @@ bool Navigate::getobsDetectedFlag(){
 }
 
 void Navigate::explore(){
+  scanData = 0.0;
+  dist = minDist;  //  Initialize dist with threshold distance value  
+  ros::Rate loop_rate(5);  //  Setting the looping rate
+  while (ros::ok()) {
+    if (obstacleDetected()) {
+      turn();  //  Calling the turn method to avoid obstacle
+    } else {
+      //  Calling the moving forward method in absence of an obstacle
+        moveForward();
+      }
+      //  Using publish method to send velocity values to turtlebot
+    velPub.publish(velocityInput);
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
 
+}
+
+bool Navigate::obstacleDetected() {
+  if (dist < minDist) {
+    setobsDetectedFlag();
+    return true;
+  } else {
+      obsDetectedFlag = false;
+      return false;
+    }
 }
 
 void Navigate::moveForward(){
+  ROS_INFO_STREAM("Path is clear to go forward");
+  //  Setting a linear velocity and making angular velocity zero
   velocityInput.linear.x = velLinear;
-  velocityinput.angular.z = 0.0;
+  velocityInput.angular.z = 0.0;
 }
 
 void Navigate::turn(){
+  ROS_INFO_STREAM("Obstacle ahead, turning");
+  //  Setting an angular velocity and making linear velocity zero
   velocityInput.linear.x = 0.0;
-  velocityinput.angular.z = velAngular;
+  velocityInput.angular.z = velAngular;
 }

@@ -57,6 +57,9 @@ class AcmeExplorer {
  private:
   bool botCheckFlag = false;  //  Flag to check the robot status
   ros::NodeHandle nH;  //  Create a node handle
+  // Navigate nav;  //  Create Navigate class object
+  // ViewImage viewImg; //  Create ViewImage class object
+
  public:
   /**
    *   @brief Default constructor for AcmeExplorer class

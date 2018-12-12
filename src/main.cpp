@@ -55,6 +55,6 @@
 int main(int argc, char **argv){
   ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
   //  Create a AcmeExplorer class object
-  AcmeExplorer bot();
+  AcmeExplorer bot;
   return 0;
 };
