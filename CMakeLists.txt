@@ -15,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
   move_base_msgs
   sensor_msgs
   std_srvs
+  image_transport
+  cv_bridge
 )
 
 ## System dependencies are found with CMake's conventions
@@ -87,7 +89,7 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add a build_depend and a exec_depend tag for "dynamic_reconfigure"
 ## * In this file (CMakeLists.txt):
 ##   * add "dynamic_reconfigure" to
-##     find_package(catkin REQUIRED COMPONENTS ...)
+     find_package(OpenCV REQUIRED)
 ##   * uncomment the "generate_dynamic_reconfigure_options" section below
 ##     and list every .cfg file to be processed
 
@@ -122,6 +124,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -152,6 +155,7 @@ add_executable(acmeExplorer src/main.cpp src/AcmeExplorer.cpp src/Navigate.cpp s
 ## Specify libraries to link a library or executable target against
  target_link_libraries(acmeExplorer
    ${catkin_LIBRARIES}
+   ${OpenCV_LIBS}
  )
 
 #############

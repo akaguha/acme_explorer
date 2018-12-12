@@ -63,16 +63,17 @@ class ViewImage {
   bool camCheckFlag = false;
   bool imgReceivedFlag = false;
   bool picSavedFlag = false;
-  ros::Subscriber imageSub;  //  Subscriber to the image topic to get pictures
+  //ros::Subscriber imageSub;  //  Subscriber to the image topic to get pictures
+  image_transport::Subscriber imgSub;
   std::string imgTitle;  //  Save picture with this file name
  public:
   /**
    *   @brief Default constructor for ViewImage class
    *
-   *   @param nothing
+   *   @param node handle as nh
    *   @return nothing
    */
-  ViewImage();
+  ViewImage(ros::NodeHandle& nh);
   /**
    *   @brief Default destructor for ViewImage class
    *

@@ -46,14 +46,19 @@
 
 #include "ViewImage.hpp"
 
-ViewImage::ViewImage(){
+ViewImage::ViewImage(ros::NodeHandle& nh){
   ROS_INFO("Initializing the ViewImage object");
-
+  imgReceivedFlag = false;
+  cv::namedWindow("view");
+  cv::startWindowThread();
+  image_transport::ImageTransport it(nh);
+  imgSub = it.subscribe("camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
+  ros::spin();
   setcamCheckFlag();
 }
 
 ViewImage::~ViewImage(){
-
+  cv::destroyWindow("view");
 }
 
 bool ViewImage::getcamCheckFlag(){
@@ -93,6 +98,17 @@ void ViewImage::setpicSavedFlag(){
 }
 
 void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img){
+  try
+  {
+    cv::imshow("view", cv_bridge::toCvShare(img, "bgr8")->image);
+    cv::waitKey(30);
+  }
+  catch (cv_bridge::Exception& e)
+  {
+    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", img->encoding.c_str());
+    //ROS_ERROR(img->encoding.c_str());
+  }
+  imgReceivedFlag = true;
 
 }
 

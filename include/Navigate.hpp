@@ -69,7 +69,7 @@ class Navigate {
   /**
    *   @brief Default constructor for Navigate class
    *
-   *   @param nothing
+   *   @param node handle as nh
    *   @return nothing
    */
   Navigate(ros::NodeHandle& nh);
