@@ -49,8 +49,8 @@
 AcmeExplorer::AcmeExplorer(){
   ROS_INFO("Initializing the bot object");
   //Navigate nav(nH);  //  Create Navigate class object
-  ViewImage viewImg(nH); //  Create ViewImage class object
   //nav.explore();
+  ViewImage viewImg(nH); //  Create ViewImage class object
   setbotCheckFlag();
 }
 

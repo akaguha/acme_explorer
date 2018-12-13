@@ -1,0 +1,5 @@
+#request image snapshot
+string fileTitle
+---
+#response received
+bool respFlag

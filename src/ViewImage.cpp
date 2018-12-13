@@ -49,16 +49,19 @@
 ViewImage::ViewImage(ros::NodeHandle& nh){
   ROS_INFO("Initializing the ViewImage object");
   imgReceivedFlag = false;
-  cv::namedWindow("view");
+  cv::namedWindow("view");  //  openCV display window
   cv::startWindowThread();
+  //  create an ImageTransport instance, initializing it with our NodeHandle
   image_transport::ImageTransport it(nh);
+  //  subscribe to the "camera/rgb/image_raw" topic
   imgSub = it.subscribe("camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
+  service = nh.advertiseService("Snap", &ViewImage::takePic, this);  //  register service with the master
   ros::spin();
   setcamCheckFlag();
 }
 
 ViewImage::~ViewImage(){
-  cv::destroyWindow("view");
+  cv::destroyWindow("view");  //  Dispose the display window
 }
 
 bool ViewImage::getcamCheckFlag(){
@@ -100,18 +103,28 @@ void ViewImage::setpicSavedFlag(){
 void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img){
   try
   {
+    //  convert the ROS image message to an OpenCV image with BGR pixel encoding, then show it in a display window
     cv::imshow("view", cv_bridge::toCvShare(img, "bgr8")->image);
     cv::waitKey(30);
+    imgReceivedFlag = true;
+    imagePtr = cv_bridge::toCvCopy(img, "bgr8");  //  Pointer to the image to be stored
   }
   catch (cv_bridge::Exception& e)
   {
-    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", img->encoding.c_str());
-    //ROS_ERROR(img->encoding.c_str());
+    //ROS_ERROR("Could not convert from '%s' to 'bgr8'.", img->encoding.c_str());
+    ROS_ERROR(img->encoding.c_str());
   }
-  imgReceivedFlag = true;
 
 }
 
-void ViewImage::takePic(std::string imgTitle){
-	
+bool ViewImage::takePic(acme_explorer::Snap::Request& req,
+                        acme_explorer::Snap::Response& resp){
+  imgTitle = req.fileTitle + ".jpg";  //  file name received from service request
+  ROS_INFO("Taking a snapshot");
+  if(imgReceivedFlag) {  //  executes only if the image is getting received
+    cv::imwrite(imgTitle, imagePtr->image); // saves the image
+    setpicSavedFlag();
+    resp.respFlag = true;
+    return true;
+  }
 }

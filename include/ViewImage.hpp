@@ -53,6 +53,7 @@
 #include <sensor_msgs/Image.h>
 #include <ros/ros.h>
 #include <string>
+#include "acme_explorer/Snap.h"
 
 /**
  * @brief  ViewImage class to stream video feed and click pictures
@@ -62,10 +63,11 @@ class ViewImage {
   //  Flags to check the status
   bool camCheckFlag = false;
   bool imgReceivedFlag = false;
-  bool picSavedFlag = false;
-  //ros::Subscriber imageSub;  //  Subscriber to the image topic to get pictures
-  image_transport::Subscriber imgSub;
+  bool picSavedFlag = false; 
+  image_transport::Subscriber imgSub;  //  Subscriber to the image topic to get pictures
   std::string imgTitle;  //  Save picture with this file name
+  ros::ServiceServer service;
+  cv_bridge::CvImagePtr imagePtr;
  public:
   /**
    *   @brief Default constructor for ViewImage class
@@ -137,7 +139,8 @@ class ViewImage {
    *   @param file name as string
    *   @return void
    */
-  void takePic(std::string imgTitle);
+  bool takePic(acme_explorer::Snap::Request &req,
+               acme_explorer::Snap::Response &resp);
 
 };
 
