@@ -46,17 +46,17 @@
 
 #include "ViewImage.hpp"
 
-ViewImage::ViewImage(ros::NodeHandle& nh){
+ViewImage::ViewImage(){
   ROS_INFO("Initializing the ViewImage object");
   imgReceivedFlag = false;
   picSavedFlag = false;
 //  cv::namedWindow("view");  //  openCV display window
 //  cv::startWindowThread();
   //  create an ImageTransport instance, initializing it with the NodeHandle
-  image_transport::ImageTransport it(nh);
+  image_transport::ImageTransport it(viewNh);
   //  subscribe to the "camera/rgb/image_raw" topic
   imgSub = it.subscribe("camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
-  service = nh.advertiseService("Snap", &ViewImage::takePic, this);  //  register service with the master
+  service = viewNh.advertiseService("Snap", &ViewImage::takePic, this);  //  register service with the master
 //  ros::spin();
   setcamCheckFlag();
 }
@@ -134,3 +134,17 @@ void ViewImage::viewImg() {
   cv::startWindowThread();
   ros::spin();
 }
+
+/**
+ * @brief    main function
+ * @param    argc int
+ * @param    argv char array
+ * @return   0 if the main executes properly
+ */
+int main(int argc, char **argv){
+  ros::init(argc, argv, "view");  //  Initialize ROS
+  //  Create a ViewImage class object
+  ViewImage vid;
+  vid.viewImg();
+  return 0;
+};

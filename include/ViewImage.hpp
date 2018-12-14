@@ -68,6 +68,7 @@ class ViewImage {
   std::string imgTitle;  //  Save picture with this file name
   ros::ServiceServer service;
   cv_bridge::CvImagePtr imagePtr;
+  ros::NodeHandle viewNh;
  public:
   /**
    *   @brief Default constructor for ViewImage class
@@ -75,7 +76,7 @@ class ViewImage {
    *   @param node handle as nh
    *   @return nothing
    */
-  ViewImage(ros::NodeHandle& nh);
+  ViewImage();
   /**
    *   @brief Default destructor for ViewImage class
    *

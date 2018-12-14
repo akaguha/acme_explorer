@@ -48,7 +48,6 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include "Navigate.hpp"
-#include "ViewImage.hpp"
 
 /**
  * @brief  Class for AcmeExplorer
@@ -57,8 +56,6 @@ class AcmeExplorer {
  private:
   bool botCheckFlag = false;  //  Flag to check the robot status
   ros::NodeHandle nH;  //  Create a node handle
-  // Navigate nav;  //  Create Navigate class object
-  // ViewImage viewImg; //  Create ViewImage class object
 
  public:
   /**
