@@ -3,6 +3,13 @@
 
   <node
     pkg="acme_explorer"
+    name="view"
+    type="view"
+    output = "screen"
+  />
+
+  <node
+    pkg="acme_explorer"
     name="acmeExplorer"
     type="acmeExplorer"
     output = "screen"
