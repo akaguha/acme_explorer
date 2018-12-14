@@ -51,6 +51,7 @@ AcmeExplorer::AcmeExplorer(){
   //Navigate nav(nH);  //  Create Navigate class object
   //nav.explore();
   ViewImage viewImg(nH); //  Create ViewImage class object
+  viewImg.viewImg();
   setbotCheckFlag();
 }
 

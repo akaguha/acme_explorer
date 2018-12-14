@@ -218,6 +218,7 @@ if(CATKIN_ENABLE_TESTING)
   target_link_libraries(
   acmeExplorerTest
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
   )
   add_dependencies(
   acmeExplorerTest

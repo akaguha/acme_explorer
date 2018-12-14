@@ -62,8 +62,8 @@ class ViewImage {
  private:
   //  Flags to check the status
   bool camCheckFlag = false;
-  bool imgReceivedFlag = false;
-  bool picSavedFlag = false; 
+  bool imgReceivedFlag;
+  bool picSavedFlag; 
   image_transport::Subscriber imgSub;  //  Subscriber to the image topic to get pictures
   std::string imgTitle;  //  Save picture with this file name
   ros::ServiceServer service;
@@ -134,13 +134,20 @@ class ViewImage {
    */
   void imageCallback(const sensor_msgs::ImageConstPtr& img);
   /**
-   *   @brief Function to click a picture when the click service is called 
+   *   @brief Function to click a picture when the Snap service is called 
    *
-   *   @param file name as string
+   *   @param 
    *   @return void
    */
   bool takePic(acme_explorer::Snap::Request &req,
                acme_explorer::Snap::Response &resp);
+  /**
+   *   @brief Function for video  surveillance
+   *
+   *   @param nothing
+   *   @return void
+   */
+  void viewImg();
 
 };
 

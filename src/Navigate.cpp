@@ -152,3 +152,7 @@ void Navigate::turn(){
   velocityInput.linear.x = 0.0;
   velocityInput.angular.z = velAngular;
 }
+
+geometry_msgs::Twist Navigate::getVelocity(){
+  return velocityInput;
+}

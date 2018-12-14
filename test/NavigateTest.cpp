@@ -47,12 +47,14 @@
 #include <gtest/gtest.h>
 #include "Navigate.hpp"
 
+
 /**
 *  @brief Testing if the node is initialized correctly 
 */
 TEST(NavTest, navNodeCheck) {
   //  Create
-  Navigate nav;  //  Create a navigate class object
+  ros::NodeHandle nH;  //  Create a node handle
+  Navigate nav(nH);  //  Create a navigate class object
   //  Act
   bool returnVal = nav.getnavCheckFlag();
   //  Assert
@@ -64,7 +66,8 @@ TEST(NavTest, navNodeCheck) {
 */
 TEST(NavTest, obsDetectedTest) {
   //  Create
-  Navigate nav;
+  ros::NodeHandle nH;  //  Create a node handle
+  Navigate nav(nH);
   nav.setobsDetectedFlag();
   //  Act
   bool returnVal = nav.getnavCheckFlag();
@@ -72,37 +75,80 @@ TEST(NavTest, obsDetectedTest) {
   EXPECT_EQ(returnVal, true);
 }
 
+/**
+*  @brief Test to check if linear velocity is set correctly
+*/
+TEST(NavTest, moveForwardTest) {
+  //  Create
+  ros::NodeHandle nH;  //  Create a node handle
+  Navigate nav(nH);
+  geometry_msgs::Twist velocity;
+  //  Act
+  nav.moveForward();
+  velocity = nav.getVelocity();
+  //  Assert
+  EXPECT_EQ(velocity.linear.x, 0.1);
+}
+
+/**
+*  @brief Test to check if the angular velocity is set correctly
+*/
+TEST(NavTest, turnTest) {
+  //  Create
+  ros::NodeHandle nH;  //  Create a node handle
+  Navigate nav(nH);
+  geometry_msgs::Twist velocity;
+  //  Act
+  nav.turn();
+  velocity = nav.getVelocity();
+  //  Assert
+  EXPECT_EQ(velocity.angular.z, 0.5);
+}
+
 // /**
-// *  @brief Test to check if linear velocity is set correctly
+// *  @brief Test to check the turn behavior of the robot
 // */
-// TEST(NavTest, moveForwardTest) {
+// TEST(NavTest, exploreTestTurn) {
 //   //  Create
-//   Navigate nav;
+//   ros::NodeHandle nH;  //  Create a node handle
+//   Navigate nav(nH);
+//   double minDist = 0.7;
+//   double dist = 0.5;
+//   geometry_msgs::Twist velocity;
 //   //  Act
-//   nav.moveForward();
+//   nav.explore();  // turn condition satisfied
+//   velocity = nav.getVelocity();  
 //   //  Assert
-//   EXPECT_EQ(, true);
+//   EXPECT_EQ(velocity.angular.z, 0.5);
 // }
 
 // *
-// *  @brief Test to check if teh angular velocity is set correctly
+// *  @brief Test to check the move forward behavior of the robot
 
-// TEST(NavTest, turnTest) {
+// TEST(NavTest, exploreTestForward) {
 //   //  Create
-//   Navigate nav;
+//   ros::NodeHandle nH;  //  Create a node handle
+//   Navigate nav(nH);
+//   double minDist = 0.7;
+//   double dist = 0.8;
+//   geometry_msgs::Twist velocity;
 //   //  Act
-//   nav.turn();
+//   nav.explore();  // turn condition satisfied
+//   velocity = nav.getVelocity();  
 //   //  Assert
-//   EXPECT_EQ(, true);
+//   EXPECT_EQ(velocity.linear.x, 0.1);
 // }
 
-// /**
-// *  @brief Test to check the explore behavior of the robot
-// */
-// TEST(NavTest, exploreTest) {
-//   //  Create
-//   Navigate nav;
-//   //  Act
-//   //  Assert
-
-// }
+/**
+*  @brief Test to check the obstacleDetected function
+*/
+TEST(NavTest, obstDetectedTest) {
+  //  Create
+  ros::NodeHandle nH;  //  Create a node handle
+  Navigate nav(nH);
+  nav.setobsDetectedFlag();  //  flag set to true
+  //  Act
+  bool returnVal = nav.obstacleDetected();
+  //  Assert
+  EXPECT_EQ(returnVal, true);
+}

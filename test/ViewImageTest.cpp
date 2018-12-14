@@ -52,7 +52,8 @@
 */
 TEST(ImgTest, camCheck) {
   //  Create
-  ViewImage imgView;  //  Create a ViewImage object
+  ros::NodeHandle nH;  //  Create a node handle
+  ViewImage imgView(nH);  //  Create a ViewImage object
   //  Act
   bool returnVal = imgView.getcamCheckFlag();
   //  Assert
@@ -65,7 +66,8 @@ TEST(ImgTest, camCheck) {
 */
 TEST(ImgTest, imgReceivedCheck) {
   //  Create
-  ViewImage imgView;
+  ros::NodeHandle nH;  //  Create a node handle
+  ViewImage imgView(nH);
   //  Act
   imgView.setimgReceivedFlag();
   bool returnVal = imgView.getimgReceivedFlag();
@@ -78,7 +80,8 @@ TEST(ImgTest, imgReceivedCheck) {
 */
 TEST(ImgTest, picSavedCheck) {
   //  Create
-  ViewImage imgView;
+  ros::NodeHandle nH;  //  Create a node handle
+  ViewImage imgView(nH);
   //  Act
   imgView.setpicSavedFlag();
   bool returnVal = imgView.getpicSavedFlag();
@@ -87,11 +90,17 @@ TEST(ImgTest, picSavedCheck) {
 }
 
 // /**
-// *  @brief Test to check the video playback 
+// *  @brief Test to check if the picture was saved successfully
 // */
-// TEST(ImgTest, imgCallBackCheck) {
+// TEST(ImgTest, picSaveCheck) {
 //   //  Create
-//   ViewImage imgView;
+//   ros::NodeHandle nH;  //  Create a node handle
+//   ViewImage imgView(nH);
+//   std::string req = "TestImg";
+//   bool resp = true;
 //   //  Act
+//   imgView.setimgReceivedFlag();
+//   bool returnVal = imgView.takePic(&req,&resp);
 //   //  Assert
+//   EXPECT_EQ(returnVal, true);
 // }

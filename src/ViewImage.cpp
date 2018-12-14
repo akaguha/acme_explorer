@@ -49,19 +49,20 @@
 ViewImage::ViewImage(ros::NodeHandle& nh){
   ROS_INFO("Initializing the ViewImage object");
   imgReceivedFlag = false;
-  cv::namedWindow("view");  //  openCV display window
-  cv::startWindowThread();
-  //  create an ImageTransport instance, initializing it with our NodeHandle
+  picSavedFlag = false;
+//  cv::namedWindow("view");  //  openCV display window
+//  cv::startWindowThread();
+  //  create an ImageTransport instance, initializing it with the NodeHandle
   image_transport::ImageTransport it(nh);
   //  subscribe to the "camera/rgb/image_raw" topic
   imgSub = it.subscribe("camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
   service = nh.advertiseService("Snap", &ViewImage::takePic, this);  //  register service with the master
-  ros::spin();
+//  ros::spin();
   setcamCheckFlag();
 }
 
 ViewImage::~ViewImage(){
-  cv::destroyWindow("view");  //  Dispose the display window
+//  cv::destroyWindow("view");  //  Dispose the display window
 }
 
 bool ViewImage::getcamCheckFlag(){
@@ -111,8 +112,7 @@ void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img){
   }
   catch (cv_bridge::Exception& e)
   {
-    //ROS_ERROR("Could not convert from '%s' to 'bgr8'.", img->encoding.c_str());
-    ROS_ERROR(img->encoding.c_str());
+    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", img->encoding.c_str());
   }
 
 }
@@ -127,4 +127,10 @@ bool ViewImage::takePic(acme_explorer::Snap::Request& req,
     resp.respFlag = true;
     return true;
   }
+}
+
+void ViewImage::viewImg() {
+  cv::namedWindow("view");  //  openCV display window
+  cv::startWindowThread();
+  ros::spin();
 }

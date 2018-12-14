@@ -144,6 +144,13 @@ class Navigate {
    *   @return void
    */
   bool obstacleDetected();
+  /**
+   *   @brief  Function to get the velocity value
+   *
+   *   @param  none
+   *   @return velocity as geometry_msgs::Twist
+   */
+  geometry_msgs::Twist getVelocity();
 
 };
 
