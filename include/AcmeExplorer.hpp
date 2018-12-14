@@ -58,6 +58,13 @@ class AcmeExplorer {
   ros::NodeHandle nH;  //  Create a node handle
 
  public:
+   /**
+   *   @brief Default constructor for AcmeExplorer class for testing purpose
+   *
+   *   @param str as string
+   *   @return nothing
+   */
+   AcmeExplorer(std::string str);
   /**
    *   @brief Default constructor for AcmeExplorer class
    *

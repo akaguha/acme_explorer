@@ -39,25 +39,22 @@
 *
 *  @section DESCRIPTION
 *
-*  This program is the main function of the test suit
+*  This program is the main function for viewing all the images 
 *
 */
 
-#include <ros/ros.h>
-#include <gtest/gtest.h>
+#include "ViewImage.hpp"
 
 /**
- * @brief  main function
- *
- * @param  count of arguments as argc
- *         argument vector as argv
- *
- * @return status of the program as int, returns 0 is all tests pass
+ * @brief    main function
+ * @param    argc int
+ * @param    argv char array
+ * @return   0 if the main executes properly
  */
-int main(int argc, char **argv) {
-  ros::init(argc, argv, "acmeExplorerTest");  //  Initialize the node
-  //ros::NodeHandle nh;  //  Create a node handle
-  testing::InitGoogleTest(&argc, argv);
-  //  Run all the declared tests with TEST()
-  return RUN_ALL_TESTS();
-}
+int main(int argc, char **argv){
+  ros::init(argc, argv, "view");  //  Initialize ROS
+  //  Create a ViewImage class object
+  ViewImage vid;
+  vid.viewImg();
+  return 0;
+};

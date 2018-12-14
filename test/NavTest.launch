@@ -1,0 +1,3 @@
+<launch>
+  <test pkg="acme_explorer" test-name="NavTest" type="NavTest" cwd="node"/>
+</launch>

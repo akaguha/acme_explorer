@@ -140,8 +140,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(acmeExplorer src/AcmeExplorer.cpp src/Navigate.cpp)
-add_executable(view src/ViewImage.cpp)
+add_executable(acmeExplorer src/AcmeExplorer.cpp src/Navigate.cpp src/AcmeExplorerMain.cpp)
+add_executable(view src/ViewImage.cpp src/ViewImageMain.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -209,27 +209,20 @@ add_executable(view src/ViewImage.cpp)
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
-  add_rostest_gtest(
-  acmeExplorerTest
-  test/AcmeExplorerTest.launch
-  test/main.cpp
-  test/NavigateTest.cpp
-  test/ViewImageTest.cpp
-  src/Navigate.cpp
-  src/ViewImage.cpp
-  src/AcmeExplorer.cpp
-  )
-  target_link_libraries(
-  acmeExplorerTest
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-  )
-  add_dependencies(
-  acmeExplorerTest
-  acmeExplorer
-  ${catkin_EXPORTED_TARGETS}
-  )
+
+  add_rostest_gtest(BotTest test/AcmeExplorerTest.launch test/BotTest.cpp src/AcmeExplorer.cpp src/Navigate.cpp)
+  target_link_libraries(BotTest ${catkin_LIBRARIES})
+  add_dependencies(BotTest acmeExplorer ${catkin_EXPORTED_TARGETS})
+
+  add_rostest_gtest(ViewImageTest test/ImageTest.launch test/ViewImageTest.cpp src/ViewImage.cpp)
+  target_link_libraries(ViewImageTest ${catkin_LIBRARIES} ${OpenCV_LIBS})
+  # add_dependencies(ViewImageTest view ${catkin_EXPORTED_TARGETS})
+
+  add_rostest_gtest(NavTest test/NavTest.launch test/NavigateTest.cpp src/Navigate.cpp)
+  target_link_libraries(NavTest ${catkin_LIBRARIES})
+  add_dependencies(NavTest acmeExplorer ${catkin_EXPORTED_TARGETS})
 endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+

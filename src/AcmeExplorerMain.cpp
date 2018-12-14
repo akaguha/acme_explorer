@@ -31,7 +31,7 @@
 *
 **********************************************************************************
 *
-*  @file    AcmeExplorer.cpp
+*  @file    main.cpp
 *  @author  Akash Guha(akaguha@terpmail.umd.edu)
 *  @version 1.0 
 *
@@ -39,50 +39,21 @@
 *
 *  @section DESCRIPTION
 *
-*  This is the cpp file showing the implementation of all the methods in the 
-*  AcmeExplorer class
+*  This program is the main function for  AcmeExplorer class
 *
 */
 
 #include "AcmeExplorer.hpp"
 
-AcmeExplorer::AcmeExplorer(std::string str){
-  ROS_INFO("Initializing the bot object for testing");
-  setbotCheckFlag();
-}
-
-AcmeExplorer::AcmeExplorer(){
-  ROS_INFO("Initializing the bot object");
-  Navigate nav(nH);  //  Create Navigate class object
-  nav.explore();
-  setbotCheckFlag();
-}
-
-AcmeExplorer::~AcmeExplorer(){
-
-}
-
-bool AcmeExplorer::getbotCheckFlag(){
-  if (botCheckFlag == true) {
-  	return true;
-  } else {
-  	return false;
-  }
-}
-
-void AcmeExplorer::setbotCheckFlag(){
-  botCheckFlag = true;	
-}
-
-// /**
-//  * @brief    main function
-//  * @param    argc int
-//  * @param    argv char array
-//  * @return   0 if the main executes properly
-//  */
-// int main(int argc, char **argv){
-//   ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
-//   //  Create a AcmeExplorer class object
-//   AcmeExplorer bot;
-//   return 0;
-// };
+/**
+ * @brief    main function
+ * @param    argc int
+ * @param    argv char array
+ * @return   0 if the main executes properly
+ */
+int main(int argc, char **argv){
+  ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
+  //  Create a AcmeExplorer class object
+  AcmeExplorer bot;
+  return 0;
+};

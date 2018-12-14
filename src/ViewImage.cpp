@@ -135,16 +135,16 @@ void ViewImage::viewImg() {
   ros::spin();
 }
 
-/**
- * @brief    main function
- * @param    argc int
- * @param    argv char array
- * @return   0 if the main executes properly
- */
-int main(int argc, char **argv){
-  ros::init(argc, argv, "view");  //  Initialize ROS
-  //  Create a ViewImage class object
-  ViewImage vid;
-  vid.viewImg();
-  return 0;
-};
+// /**
+//  * @brief    main function
+//  * @param    argc int
+//  * @param    argv char array
+//  * @return   0 if the main executes properly
+//  */
+// int main(int argc, char **argv){
+//   ros::init(argc, argv, "view");  //  Initialize ROS
+//   //  Create a ViewImage class object
+//   ViewImage vid;
+//   vid.viewImg();
+//   return 0;
+// };

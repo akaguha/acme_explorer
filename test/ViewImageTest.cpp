@@ -52,8 +52,8 @@
 */
 TEST(ImgTest, camCheck) {
   //  Create
-  ros::NodeHandle nH;  //  Create a node handle
-  ViewImage imgView(nH);  //  Create a ViewImage object
+  //ros::NodeHandle nH;  //  Create a node handle
+  ViewImage imgView;  //  Create a ViewImage object
   //  Act
   bool returnVal = imgView.getcamCheckFlag();
   //  Assert
@@ -66,8 +66,8 @@ TEST(ImgTest, camCheck) {
 */
 TEST(ImgTest, imgReceivedCheck) {
   //  Create
-  ros::NodeHandle nH;  //  Create a node handle
-  ViewImage imgView(nH);
+  //ros::NodeHandle nH;  //  Create a node handle
+  ViewImage imgView;
   //  Act
   imgView.setimgReceivedFlag();
   bool returnVal = imgView.getimgReceivedFlag();
@@ -80,8 +80,8 @@ TEST(ImgTest, imgReceivedCheck) {
 */
 TEST(ImgTest, picSavedCheck) {
   //  Create
-  ros::NodeHandle nH;  //  Create a node handle
-  ViewImage imgView(nH);
+  //ros::NodeHandle nH;  //  Create a node handle
+  ViewImage imgView;
   //  Act
   imgView.setpicSavedFlag();
   bool returnVal = imgView.getpicSavedFlag();
@@ -104,3 +104,19 @@ TEST(ImgTest, picSavedCheck) {
 //   //  Assert
 //   EXPECT_EQ(returnVal, true);
 // }
+
+/**
+ * @brief  main function
+ *
+ * @param  count of arguments as argc
+ *         argument vector as argv
+ *
+ * @return status of the program as int, returns 0 is all tests pass
+ */
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "ViewImageTest");  //  Initialize the node
+  //ros::NodeHandle nh;  //  Create a node handle
+  testing::InitGoogleTest(&argc, argv);
+  //  Run all the declared tests with TEST()
+  return RUN_ALL_TESTS();
+}

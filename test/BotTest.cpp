@@ -31,7 +31,7 @@
 *
 **********************************************************************************
 *
-*  @file    AcmeExplorer.cpp
+*  @file    BotTest.cpp
 *  @author  Akash Guha(akaguha@terpmail.umd.edu)
 *  @version 1.0 
 *
@@ -39,50 +39,39 @@
 *
 *  @section DESCRIPTION
 *
-*  This is the cpp file showing the implementation of all the methods in the 
-*  AcmeExplorer class
+*  This is a test program to check the working of AcmeExplorer class.
 *
 */
 
+#include <ros/ros.h>
+#include <gtest/gtest.h>
 #include "AcmeExplorer.hpp"
 
-AcmeExplorer::AcmeExplorer(std::string str){
-  ROS_INFO("Initializing the bot object for testing");
-  setbotCheckFlag();
+/**
+*  @brief Testing if the node is initialized correctly 
+*/
+TEST(BotTest, botCheck) {
+  //  Create
+  //ros::NodeHandle nH;  //  Create a node handle
+  AcmeExplorer bot("Test");  //  Create a ViewImage object
+  //  Act
+  bool returnVal = bot.getbotCheckFlag();
+  //  Assert
+  EXPECT_EQ(returnVal, true);
 }
 
-AcmeExplorer::AcmeExplorer(){
-  ROS_INFO("Initializing the bot object");
-  Navigate nav(nH);  //  Create Navigate class object
-  nav.explore();
-  setbotCheckFlag();
+/**
+ * @brief  main function
+ *
+ * @param  count of arguments as argc
+ *         argument vector as argv
+ *
+ * @return status of the program as int, returns 0 is all tests pass
+ */
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "BotTest");  //  Initialize the node
+  //ros::NodeHandle nh;  //  Create a node handle
+  testing::InitGoogleTest(&argc, argv);
+  //  Run all the declared tests with TEST()
+  return RUN_ALL_TESTS();
 }
-
-AcmeExplorer::~AcmeExplorer(){
-
-}
-
-bool AcmeExplorer::getbotCheckFlag(){
-  if (botCheckFlag == true) {
-  	return true;
-  } else {
-  	return false;
-  }
-}
-
-void AcmeExplorer::setbotCheckFlag(){
-  botCheckFlag = true;	
-}
-
-// /**
-//  * @brief    main function
-//  * @param    argc int
-//  * @param    argv char array
-//  * @return   0 if the main executes properly
-//  */
-// int main(int argc, char **argv){
-//   ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
-//   //  Create a AcmeExplorer class object
-//   AcmeExplorer bot;
-//   return 0;
-// };

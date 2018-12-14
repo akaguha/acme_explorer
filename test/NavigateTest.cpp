@@ -152,3 +152,19 @@ TEST(NavTest, obstDetectedTest) {
   //  Assert
   EXPECT_EQ(returnVal, true);
 }
+
+/**
+ * @brief  main function
+ *
+ * @param  count of arguments as argc
+ *         argument vector as argv
+ *
+ * @return status of the program as int, returns 0 is all tests pass
+ */
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "NavTest");  //  Initialize the node
+  //ros::NodeHandle nh;  //  Create a node handle
+  testing::InitGoogleTest(&argc, argv);
+  //  Run all the declared tests with TEST()
+  return RUN_ALL_TESTS();
+}

@@ -1,4 +1,3 @@
 <launch>
-  <node pkg="acme_explorer" name="acmeExplorer" type="acmeExplorer" />
-  <test pkg="acme_explorer" test-name="acmeExplorerTest" type="acmeExplorerTest" />
+  <test pkg="acme_explorer" test-name="BotTest" type="BotTest" cwd="node"/>
 </launch>
