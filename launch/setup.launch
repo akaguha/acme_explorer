@@ -1,7 +1,7 @@
 <launch>
 
   <include file= "$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
-  <arg name = "world_file" default = "$(find acme_explorer)/worlds/corridor.world"/>
+  <arg name = "world_file" default = "$(find acme_explorer)/worlds/shape_world.world"/>
   </include>
 
   <include file="$(find turtlebot_gazebo)/launch/gmapping_demo.launch"/>
