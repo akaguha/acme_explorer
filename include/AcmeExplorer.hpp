@@ -47,6 +47,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
+#include <string>
 #include "Navigate.hpp"
 
 /**
@@ -95,4 +96,4 @@ class AcmeExplorer {
   void setbotCheckFlag();
 };
 
-#endif // INCLUDE_ACMEEXPLORER_HPP_
+#endif  //  INCLUDE_ACMEEXPLORER_HPP_

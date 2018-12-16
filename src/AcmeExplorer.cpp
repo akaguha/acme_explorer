@@ -49,29 +49,29 @@
 #include "Navigate.hpp"
 #include "AcmeExplorer.hpp"
 
-AcmeExplorer::AcmeExplorer(std::string str){
+AcmeExplorer::AcmeExplorer(std::string str) {
   ROS_INFO("Initializing the bot object for testing");
   setbotCheckFlag();
 }
 
-AcmeExplorer::AcmeExplorer(){
+AcmeExplorer::AcmeExplorer() {
   ROS_INFO("Initializing the bot object");
   Navigate nav(nH);  //  Create Navigate class object
   nav.explore();  //  Call the explore function of Navigate class
   setbotCheckFlag();
 }
 
-AcmeExplorer::~AcmeExplorer(){
+AcmeExplorer::~AcmeExplorer() {
 }
 
-bool AcmeExplorer::getbotCheckFlag(){
+bool AcmeExplorer::getbotCheckFlag() {
   if (botCheckFlag == true) {
-  	return true;
+    return true;
   } else {
-  	return false;
+    return false;
   }
 }
 
-void AcmeExplorer::setbotCheckFlag(){
-  botCheckFlag = true;	
+void AcmeExplorer::setbotCheckFlag() {
+  botCheckFlag = true;
 }

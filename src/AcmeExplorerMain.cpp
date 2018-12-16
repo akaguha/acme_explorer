@@ -54,9 +54,9 @@
  * @param    argv char array
  * @return   0 if the main executes properly
  */
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
   ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
   //  Create a AcmeExplorer class object
   AcmeExplorer bot;
   return 0;
-};
+}

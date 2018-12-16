@@ -45,13 +45,13 @@
 
 //  header to publish and subscribe images
 #include <image_transport/image_transport.h>
-//  header to display images using OpenCV's GUI 
-#include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/Image.h>
 #include <ros/ros.h>
 #include <string>
 #include "acme_explorer/Snap.h"
+//  header to display images using OpenCV's GUI
+#include <opencv2/highgui/highgui.hpp>
 #include "ViewImage.hpp"
 
 /**
@@ -60,10 +60,10 @@
  * @param    argv char array
  * @return   0 if the main executes properly
  */
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
   ros::init(argc, argv, "view");  //  Initialize ROS
   //  Create a ViewImage class object
   ViewImage vid;
   vid.viewImg();  //  Call the viewImg function of ViewImage class
   return 0;
-};
+}

@@ -57,7 +57,8 @@ class Navigate {
   //  Flags to check the status
   bool navCheckFlag = false;
   bool obsDetectedFlag;
-  geometry_msgs::Twist velocityInput;  //  Velocity values to be published to the bot
+  //  Velocity values to be published to the bot
+  geometry_msgs::Twist velocityInput;
   ros::Publisher velPub;  //  Publisher for turtlebot's velocity topic
   ros::Subscriber scanSub;  //  Subscriber for laser scanner sensor
   double velLinear;  //  linera velocity
@@ -68,6 +69,7 @@ class Navigate {
   ros::Timer timer1;  //  Create a timer
   bool exploreFlag;  //  Exploratory behavior flag
   int count;
+
  public:
   /**
    *   @brief Default constructor for Navigate class
@@ -161,7 +163,6 @@ class Navigate {
    *   @return void
    */
   void turnCallback(const ros::TimerEvent&);
-
 };
 
-#endif // INCLUDE_NAVIGATE_HPP_
+#endif  //  INCLUDE_NAVIGATE_HPP_

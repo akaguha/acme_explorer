@@ -119,7 +119,7 @@ TEST(NavTest, turnTest) {
 //   geometry_msgs::Twist velocity;
 //   //  Act
 //   nav.explore();  // turn condition satisfied
-//   velocity = nav.getVelocity();  
+//   velocity = nav.getVelocity();
 //   //  Assert
 //   EXPECT_EQ(velocity.angular.z, 0.5);
 // }
@@ -136,7 +136,7 @@ TEST(NavTest, turnTest) {
 //   geometry_msgs::Twist velocity;
 //   //  Act
 //   nav.explore();  // turn condition satisfied
-//   velocity = nav.getVelocity();  
+//   velocity = nav.getVelocity();
 //   //  Assert
 //   EXPECT_EQ(velocity.linear.x, 0.1);
 // }
@@ -165,7 +165,6 @@ TEST(NavTest, obstDetectedTest) {
  */
 int main(int argc, char **argv) {
   ros::init(argc, argv, "NavTest");  //  Initialize the node
-  //ros::NodeHandle nh;  //  Create a node handle
   testing::InitGoogleTest(&argc, argv);
   //  Run all the declared tests with TEST()
   return RUN_ALL_TESTS();

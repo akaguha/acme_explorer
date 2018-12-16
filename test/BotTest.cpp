@@ -44,17 +44,16 @@
 */
 
 #include <std_msgs/String.h>
-#include "Navigate.hpp"
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "AcmeExplorer.hpp"
+#include "Navigate.hpp"
 
 /**
 *  @brief Testing if the node is initialized correctly 
 */
 TEST(BotTest, botCheck) {
   //  Create
-  //ros::NodeHandle nH;  //  Create a node handle
   AcmeExplorer bot("Test");  //  Create a ViewImage object
   //  Act
   bool returnVal = bot.getbotCheckFlag();
@@ -72,7 +71,6 @@ TEST(BotTest, botCheck) {
  */
 int main(int argc, char **argv) {
   ros::init(argc, argv, "BotTest");  //  Initialize the node
-  //ros::NodeHandle nh;  //  Create a node handle
   testing::InitGoogleTest(&argc, argv);
   //  Run all the declared tests with TEST()
   return RUN_ALL_TESTS();

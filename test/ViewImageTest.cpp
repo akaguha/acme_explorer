@@ -45,14 +45,14 @@
 
 //  header to publish and subscribe images
 #include <image_transport/image_transport.h>
-//  header to display images using OpenCV's GUI 
-#include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/Image.h>
-#include <string>
-#include "acme_explorer/Snap.h"
 #include <ros/ros.h>
 #include <gtest/gtest.h>
+#include <string>
+#include "acme_explorer/Snap.h"
+//  header to display images using OpenCV's GUI
+#include <opencv2/highgui/highgui.hpp>
 #include "ViewImage.hpp"
 
 /**
@@ -60,7 +60,6 @@
 */
 TEST(ImgTest, camCheck) {
   //  Create
-  //ros::NodeHandle nH;  //  Create a node handle
   ViewImage imgView;  //  Create a ViewImage object
   //  Act
   bool returnVal = imgView.getcamCheckFlag();
@@ -74,7 +73,6 @@ TEST(ImgTest, camCheck) {
 */
 TEST(ImgTest, imgReceivedCheck) {
   //  Create
-  //ros::NodeHandle nH;  //  Create a node handle
   ViewImage imgView;
   //  Act
   imgView.setimgReceivedFlag();
@@ -88,7 +86,6 @@ TEST(ImgTest, imgReceivedCheck) {
 */
 TEST(ImgTest, picSavedCheck) {
   //  Create
-  //ros::NodeHandle nH;  //  Create a node handle
   ViewImage imgView;
   //  Act
   imgView.setpicSavedFlag();
@@ -123,7 +120,6 @@ TEST(ImgTest, picSavedCheck) {
  */
 int main(int argc, char **argv) {
   ros::init(argc, argv, "ViewImageTest");  //  Initialize the node
-  //ros::NodeHandle nh;  //  Create a node handle
   testing::InitGoogleTest(&argc, argv);
   //  Run all the declared tests with TEST()
   return RUN_ALL_TESTS();

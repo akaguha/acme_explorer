@@ -46,90 +46,91 @@
 
 //  header to publish and subscribe images
 #include <image_transport/image_transport.h>
-//  header to display images using OpenCV's GUI 
-#include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/Image.h>
 #include <ros/ros.h>
 #include <string>
 #include "acme_explorer/Snap.h"
+//  header to display images using OpenCV's GUI
+#include <opencv2/highgui/highgui.hpp>
 #include "ViewImage.hpp"
 
-ViewImage::ViewImage(){
+ViewImage::ViewImage() {
   ROS_INFO("Initializing the ViewImage object");
   imgReceivedFlag = false;
   picSavedFlag = false;
   //  create an ImageTransport instance, initializing it with the NodeHandle
   image_transport::ImageTransport it(viewNh);
   //  subscribe to the "camera/rgb/image_raw" topic
-  imgSub = it.subscribe("camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
+  imgSub = it.subscribe(
+  "camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
   //  register service with the master
   service = viewNh.advertiseService("Snap", &ViewImage::takePic, this);
   setcamCheckFlag();
 }
 
-ViewImage::~ViewImage(){
+ViewImage::~ViewImage() {
 //  cv::destroyWindow("view");  //  Dispose the display window
 }
 
-bool ViewImage::getcamCheckFlag(){
+bool ViewImage::getcamCheckFlag() {
   if (camCheckFlag == true) {
-  	return true;
+    return true;
   } else {
-  	false;
+    return false;
   }
 }
 
-void ViewImage::setcamCheckFlag(){
+void ViewImage::setcamCheckFlag() {
   camCheckFlag = true;
 }
 
-bool ViewImage::getimgReceivedFlag(){
+bool ViewImage::getimgReceivedFlag() {
   if (imgReceivedFlag == true) {
-  	return true;
+    return true;
   } else {
-  	false;
+    return false;
   }
 }
 
-void ViewImage::setimgReceivedFlag(){
+void ViewImage::setimgReceivedFlag() {
   imgReceivedFlag = true;
 }
 
-bool ViewImage::getpicSavedFlag(){
+bool ViewImage::getpicSavedFlag() {
   if (picSavedFlag == true) {
-  	return true;
+    return true;
   } else {
-  	false;
+    return false;
   }
 }
 
-void ViewImage::setpicSavedFlag(){
+void ViewImage::setpicSavedFlag() {
   picSavedFlag = true;
 }
 
-void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img){
-  try
-  {
-    //  convert the ROS image message to an OpenCV image with BGR pixel encoding, then show it in a display window
+void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img) {
+  try {
+    //  convert the ROS image message to an OpenCV image with BGR
+    //  pixel encoding, then show it in a display window
     cv::imshow("view", cv_bridge::toCvShare(img, "bgr8")->image);
     cv::waitKey(30);
     imgReceivedFlag = true;  //  Sets the image received flag
-    imagePtr = cv_bridge::toCvCopy(img, "bgr8");  //  Pointer to the image to be stored
+    //  Pointer to the image to be stored
+    imagePtr = cv_bridge::toCvCopy(img, "bgr8");
   }
-  catch (cv_bridge::Exception& e)
-  {
+  catch (cv_bridge::Exception& e) {
     ROS_ERROR("Could not convert from '%s' to 'bgr8'.", img->encoding.c_str());
   }
-
 }
 
 bool ViewImage::takePic(acme_explorer::Snap::Request& req,
-                        acme_explorer::Snap::Response& resp){
-  imgTitle = req.fileTitle + ".jpg";  //  file name received from service request
+                        acme_explorer::Snap::Response& resp) {
+  //  file name received from service request
+  imgTitle = req.fileTitle + ".jpg";
   ROS_INFO("Taking a snapshot");
-  if(imgReceivedFlag) {  //  executes only if the image is getting received
-    cv::imwrite(imgTitle, imagePtr->image); // saves the image
+  if (imgReceivedFlag) {  //  executes only if the image is getting received
+    cv::imwrite(imgTitle, imagePtr->image);  // saves the image
     setpicSavedFlag();  //  Sets the picture saved flag
     resp.respFlag = true;  //  respondes with a boolean true
     return true;

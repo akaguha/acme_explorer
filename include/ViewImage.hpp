@@ -47,13 +47,13 @@
 
 //  header to publish and subscribe images
 #include <image_transport/image_transport.h>
-//  header to display images using OpenCV's GUI 
-#include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/Image.h>
 #include <ros/ros.h>
 #include <string>
 #include "acme_explorer/Snap.h"
+//  header to display images using OpenCV's GUI
+#include <opencv2/highgui/highgui.hpp>
 
 /**
  * @brief  ViewImage class to stream video feed and click pictures
@@ -63,12 +63,14 @@ class ViewImage {
   //  Flags to check the status
   bool camCheckFlag = false;
   bool imgReceivedFlag;
-  bool picSavedFlag; 
-  image_transport::Subscriber imgSub;  //  Subscriber to the image topic to get pictures
+  bool picSavedFlag;
+  //  Subscriber to the image topic to get pictures
+  image_transport::Subscriber imgSub;
   std::string imgTitle;  //  Save picture with this file name
   ros::ServiceServer service;  //  Create a service with master
   cv_bridge::CvImagePtr imagePtr;  //  Pointer to store the image
   ros::NodeHandle viewNh;
+
  public:
   /**
    *   @brief Default constructor for ViewImage class
@@ -149,7 +151,6 @@ class ViewImage {
    *   @return void
    */
   void viewImg();
-
 };
 
-#endif // INCLUDE_VIEWIMAGE_HPP_
+#endif  //  INCLUDE_VIEWIMAGE_HPP_
