@@ -48,6 +48,7 @@
 
 Navigate::Navigate(ros::NodeHandle& nh){
   ROS_INFO("Initializing the navigate object");
+  exploreFlag = false;
   velLinear = 0.1;
   velAngular = 0.5;
   obsDetectedFlag = false;
@@ -59,6 +60,8 @@ Navigate::Navigate(ros::NodeHandle& nh){
   //  Setting up a laser scanner subscriber with the master
   scanSub = nh.subscribe <sensor_msgs::LaserScan>
   ("/scan", 100, &Navigate::scanCallBack, this);
+  //  Timers allow you to get a callback at a specified rate.
+  timer1 = nh.createTimer(ros::Duration(75), &Navigate::turnCallback, this);
   //  Initializing the robot with zero velocity
   velocityInput.linear.x = 0.0;
   velocityInput.angular.z = 0.0;
@@ -67,7 +70,7 @@ Navigate::Navigate(ros::NodeHandle& nh){
 }
 
 Navigate::~Navigate(){
-  //  Stopping the robot
+  //  Stopping the robot on node closure
   velocityInput.linear.x = 0.0;
   velocityInput.angular.z = 0.0;
   velPub.publish(velocityInput);
@@ -76,8 +79,8 @@ Navigate::~Navigate(){
 void Navigate::scanCallBack(const sensor_msgs::LaserScan::ConstPtr& scan){
   dist = minDist;  //  Initialize dist with threshold distance value
   //int sz = scan->ranges.size();  //  Stores the size of laser scan array
-  for (int i = 0; i < scan->ranges.size(); i++) {
-    scanData = scan->ranges[i];  //  Stores the laser scan data
+  for (const auto& scanData: scan->ranges){
+    //scanData = scan->ranges[i];  //  Stores the laser scan data
     //  Based on the received data assigning value to dist variable
     if (scanData < dist) {
       dist = scanData;
@@ -113,9 +116,15 @@ bool Navigate::getobsDetectedFlag(){
 void Navigate::explore(){
   scanData = 0.0;
   dist = minDist;  //  Initialize dist with threshold distance value  
+  exploreFlag = true;  //  initially bot turns for 50 iterations to scout the world
+  count = 0;
   ros::Rate loop_rate(5);  //  Setting the looping rate
   while (ros::ok()) {
-    if (obstacleDetected()) {
+    if(exploreFlag) {
+      ROS_INFO_STREAM("Exploring");
+      turn();
+    } else if (obstacleDetected()) {
+      ROS_INFO_STREAM("Obstacle ahead, turning");
       turn();  //  Calling the turn method to avoid obstacle
     } else {
       //  Calling the moving forward method in absence of an obstacle
@@ -125,6 +134,11 @@ void Navigate::explore(){
     velPub.publish(velocityInput);
     ros::spinOnce();
     loop_rate.sleep();
+    count++;  //  increments the counter on every iteration
+    if (count == 50) {
+      count = 0;
+      exploreFlag = false;  //  
+    }
   }
 
 }
@@ -147,12 +161,17 @@ void Navigate::moveForward(){
 }
 
 void Navigate::turn(){
-  ROS_INFO_STREAM("Obstacle ahead, turning");
   //  Setting an angular velocity and making linear velocity zero
   velocityInput.linear.x = 0.0;
   velocityInput.angular.z = velAngular;
 }
 
-geometry_msgs::Twist Navigate::getVelocity(){
+geometry_msgs::Twist Navigate::getVelocity() {
   return velocityInput;
+}
+
+void Navigate::turnCallback(const ros::TimerEvent&) {
+  exploreFlag = true;  //  Setting the explore flag after every 75sec 
+  count = 0;  //  resetting the counter
+  ROS_INFO("turnCallback triggered");
 }

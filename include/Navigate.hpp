@@ -62,9 +62,12 @@ class Navigate {
   ros::Subscriber scanSub;  //  Subscriber for laser scanner sensor
   double velLinear;  //  linera velocity
   double velAngular;  //  angular velocity
-  float minDist; //= 0.7;  //  Stores the threshold distance from obstacle
+  float minDist;  //  Stores the threshold distance from obstacle
   float scanData;  //  Stores data from turtlebot's laser scanner
   float dist;
+  ros::Timer timer1;  //  Create a timer
+  bool exploreFlag;  //  Exploratory behavior flag
+  int count;
  public:
   /**
    *   @brief Default constructor for Navigate class
@@ -151,6 +154,13 @@ class Navigate {
    *   @return velocity as geometry_msgs::Twist
    */
   geometry_msgs::Twist getVelocity();
+  /**
+   *   @brief  Timer callback function. Gets called at a specified rate
+   *
+   *   @param  const ros::TimerEvent&
+   *   @return void
+   */
+  void turnCallback(const ros::TimerEvent&);
 
 };
 
