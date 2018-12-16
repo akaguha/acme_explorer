@@ -59,12 +59,12 @@ class AcmeExplorer {
 
  public:
    /**
-   *   @brief Default constructor for AcmeExplorer class for testing purpose
+   *   @brief Constructor for AcmeExplorer class for testing purpose
    *
    *   @param str as string
    *   @return nothing
    */
-   AcmeExplorer(std::string str);
+  explicit AcmeExplorer(std::string str);
   /**
    *   @brief Default constructor for AcmeExplorer class
    *

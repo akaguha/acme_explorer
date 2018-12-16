@@ -43,6 +43,9 @@
 *
 */
 
+#include <ros/ros.h>
+#include <std_msgs/String.h>
+#include "Navigate.hpp"
 #include "AcmeExplorer.hpp"
 
 /**

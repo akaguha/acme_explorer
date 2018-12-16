@@ -43,6 +43,8 @@
 *
 */
 
+#include <std_msgs/String.h>
+#include "Navigate.hpp"
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "AcmeExplorer.hpp"

@@ -66,8 +66,8 @@ class ViewImage {
   bool picSavedFlag; 
   image_transport::Subscriber imgSub;  //  Subscriber to the image topic to get pictures
   std::string imgTitle;  //  Save picture with this file name
-  ros::ServiceServer service;
-  cv_bridge::CvImagePtr imagePtr;
+  ros::ServiceServer service;  //  Create a service with master
+  cv_bridge::CvImagePtr imagePtr;  //  Pointer to store the image
   ros::NodeHandle viewNh;
  public:
   /**

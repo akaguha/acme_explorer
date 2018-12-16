@@ -43,6 +43,14 @@
 *
 */
 
+//  header to publish and subscribe images
+#include <image_transport/image_transport.h>
+//  header to display images using OpenCV's GUI 
+#include <opencv2/highgui/highgui.hpp>
+#include <cv_bridge/cv_bridge.h>
+#include <sensor_msgs/Image.h>
+#include <string>
+#include "acme_explorer/Snap.h"
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "ViewImage.hpp"

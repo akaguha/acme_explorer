@@ -44,6 +44,9 @@
 *
 */
 
+#include <geometry_msgs/Twist.h>
+#include <sensor_msgs/LaserScan.h>
+#include <ros/ros.h>
 #include "Navigate.hpp"
 
 Navigate::Navigate(ros::NodeHandle& nh){

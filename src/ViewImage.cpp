@@ -44,20 +44,27 @@
 *
 */
 
+//  header to publish and subscribe images
+#include <image_transport/image_transport.h>
+//  header to display images using OpenCV's GUI 
+#include <opencv2/highgui/highgui.hpp>
+#include <cv_bridge/cv_bridge.h>
+#include <sensor_msgs/Image.h>
+#include <ros/ros.h>
+#include <string>
+#include "acme_explorer/Snap.h"
 #include "ViewImage.hpp"
 
 ViewImage::ViewImage(){
   ROS_INFO("Initializing the ViewImage object");
   imgReceivedFlag = false;
   picSavedFlag = false;
-//  cv::namedWindow("view");  //  openCV display window
-//  cv::startWindowThread();
   //  create an ImageTransport instance, initializing it with the NodeHandle
   image_transport::ImageTransport it(viewNh);
   //  subscribe to the "camera/rgb/image_raw" topic
   imgSub = it.subscribe("camera/rgb/image_raw", 10, &ViewImage::imageCallback, this);
-  service = viewNh.advertiseService("Snap", &ViewImage::takePic, this);  //  register service with the master
-//  ros::spin();
+  //  register service with the master
+  service = viewNh.advertiseService("Snap", &ViewImage::takePic, this);
   setcamCheckFlag();
 }
 
@@ -107,7 +114,7 @@ void ViewImage::imageCallback(const sensor_msgs::ImageConstPtr& img){
     //  convert the ROS image message to an OpenCV image with BGR pixel encoding, then show it in a display window
     cv::imshow("view", cv_bridge::toCvShare(img, "bgr8")->image);
     cv::waitKey(30);
-    imgReceivedFlag = true;
+    imgReceivedFlag = true;  //  Sets the image received flag
     imagePtr = cv_bridge::toCvCopy(img, "bgr8");  //  Pointer to the image to be stored
   }
   catch (cv_bridge::Exception& e)
@@ -123,28 +130,15 @@ bool ViewImage::takePic(acme_explorer::Snap::Request& req,
   ROS_INFO("Taking a snapshot");
   if(imgReceivedFlag) {  //  executes only if the image is getting received
     cv::imwrite(imgTitle, imagePtr->image); // saves the image
-    setpicSavedFlag();
-    resp.respFlag = true;
+    setpicSavedFlag();  //  Sets the picture saved flag
+    resp.respFlag = true;  //  respondes with a boolean true
     return true;
   }
 }
 
 void ViewImage::viewImg() {
-  cv::namedWindow("view");  //  openCV display window
+  //  openCV display window
+  cv::namedWindow("view");
   cv::startWindowThread();
   ros::spin();
 }
-
-// /**
-//  * @brief    main function
-//  * @param    argc int
-//  * @param    argv char array
-//  * @return   0 if the main executes properly
-//  */
-// int main(int argc, char **argv){
-//   ros::init(argc, argv, "view");  //  Initialize ROS
-//   //  Create a ViewImage class object
-//   ViewImage vid;
-//   vid.viewImg();
-//   return 0;
-// };

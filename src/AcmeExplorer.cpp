@@ -44,6 +44,9 @@
 *
 */
 
+#include <ros/ros.h>
+#include <std_msgs/String.h>
+#include "Navigate.hpp"
 #include "AcmeExplorer.hpp"
 
 AcmeExplorer::AcmeExplorer(std::string str){
@@ -54,12 +57,11 @@ AcmeExplorer::AcmeExplorer(std::string str){
 AcmeExplorer::AcmeExplorer(){
   ROS_INFO("Initializing the bot object");
   Navigate nav(nH);  //  Create Navigate class object
-  nav.explore();
+  nav.explore();  //  Call the explore function of Navigate class
   setbotCheckFlag();
 }
 
 AcmeExplorer::~AcmeExplorer(){
-
 }
 
 bool AcmeExplorer::getbotCheckFlag(){
@@ -73,16 +75,3 @@ bool AcmeExplorer::getbotCheckFlag(){
 void AcmeExplorer::setbotCheckFlag(){
   botCheckFlag = true;	
 }
-
-// /**
-//  * @brief    main function
-//  * @param    argc int
-//  * @param    argv char array
-//  * @return   0 if the main executes properly
-//  */
-// int main(int argc, char **argv){
-//   ros::init(argc, argv, "acmeExplorer");  //  Initialize ROS
-//   //  Create a AcmeExplorer class object
-//   AcmeExplorer bot;
-//   return 0;
-// };

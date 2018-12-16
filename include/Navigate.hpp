@@ -75,7 +75,7 @@ class Navigate {
    *   @param node handle as nh
    *   @return nothing
    */
-  Navigate(ros::NodeHandle& nh);
+  explicit Navigate(ros::NodeHandle& nh);
   /**
    *   @brief Default destructor for Navigate class
    *

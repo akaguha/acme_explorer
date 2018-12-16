@@ -43,6 +43,8 @@
 *
 */
 
+#include <geometry_msgs/Twist.h>
+#include <sensor_msgs/LaserScan.h>
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "Navigate.hpp"
@@ -159,7 +161,7 @@ TEST(NavTest, obstDetectedTest) {
  * @param  count of arguments as argc
  *         argument vector as argv
  *
- * @return status of the program as int, returns 0 is all tests pass
+ * @return status of the program as int, returns 0 if all tests pass
  */
 int main(int argc, char **argv) {
   ros::init(argc, argv, "NavTest");  //  Initialize the node
