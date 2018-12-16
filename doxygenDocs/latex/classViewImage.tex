@@ -1,0 +1,258 @@
+\hypertarget{classViewImage}{}\section{View\+Image Class Reference}
+\label{classViewImage}\index{View\+Image@{View\+Image}}
+
+
+\hyperlink{classViewImage}{View\+Image} class to stream video feed and click pictures.  
+
+
+
+
+{\ttfamily \#include $<$View\+Image.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classViewImage_adf6ffef464f5d2047ddf1e061e8ab9e7}{View\+Image} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classViewImage}{View\+Image} class. \end{DoxyCompactList}\item 
+\hyperlink{classViewImage_a754fe59872a1736005cdbb816baf80ce}{$\sim$\+View\+Image} ()
+\begin{DoxyCompactList}\small\item\em Default destructor for \hyperlink{classViewImage}{View\+Image} class. \end{DoxyCompactList}\item 
+bool \hyperlink{classViewImage_aa598e832e3edf78bfe9fa2ffff922bd7}{getcam\+Check\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to check camera status. \end{DoxyCompactList}\item 
+void \hyperlink{classViewImage_abaabe650dbbe820aedfd43993a30ede7}{setcam\+Check\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to set camera status flag. \end{DoxyCompactList}\item 
+bool \hyperlink{classViewImage_a6cff5068af16e2fc3527f75cc29af79e}{getimg\+Received\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to check status of received image. \end{DoxyCompactList}\item 
+void \hyperlink{classViewImage_a3ca482c5f91db23474d690c603c13b1c}{setimg\+Received\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to set received image status. \end{DoxyCompactList}\item 
+bool \hyperlink{classViewImage_a1747ed0dfbc89fbea8e1d865c5786c41}{getpic\+Saved\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to check status of saved picture. \end{DoxyCompactList}\item 
+void \hyperlink{classViewImage_afd3a1cb064bae769a8e91e53692a0220}{setpic\+Saved\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to set saved picture status. \end{DoxyCompactList}\item 
+void \hyperlink{classViewImage_ac13c93f43b68aa64cfe0d62bd2afbfd2}{image\+Callback} (const sensor\+\_\+msgs\+::\+Image\+Const\+Ptr \&img)
+\begin{DoxyCompactList}\small\item\em Callback function that will get called when a new image has arrived on the \char`\"{}camera/image\char`\"{} topic. \end{DoxyCompactList}\item 
+bool \hyperlink{classViewImage_a6382f6a3ce6dfe80c9846bb74c570f7f}{take\+Pic} (acme\+\_\+explorer\+::\+Snap\+::\+Request \&req, acme\+\_\+explorer\+::\+Snap\+::\+Response \&resp)
+\begin{DoxyCompactList}\small\item\em Function to click a picture when the Snap service is called. \end{DoxyCompactList}\item 
+void \hyperlink{classViewImage_af15c58845d674897313ba7e8247965e4}{view\+Img} ()
+\begin{DoxyCompactList}\small\item\em Function for video surveillance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classViewImage}{View\+Image} class to stream video feed and click pictures. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{View\+Image@{View\+Image}!View\+Image@{View\+Image}}
+\index{View\+Image@{View\+Image}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{View\+Image()}{ViewImage()}}]{\setlength{\rightskip}{0pt plus 5cm}View\+Image\+::\+View\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_adf6ffef464f5d2047ddf1e061e8ab9e7}{}\label{classViewImage_adf6ffef464f5d2047ddf1e061e8ab9e7}
+
+
+Default constructor for \hyperlink{classViewImage}{View\+Image} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & handle as nh \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!````~View\+Image@{$\sim$\+View\+Image}}
+\index{````~View\+Image@{$\sim$\+View\+Image}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{$\sim$\+View\+Image()}{~ViewImage()}}]{\setlength{\rightskip}{0pt plus 5cm}View\+Image\+::$\sim$\+View\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_a754fe59872a1736005cdbb816baf80ce}{}\label{classViewImage_a754fe59872a1736005cdbb816baf80ce}
+
+
+Default destructor for \hyperlink{classViewImage}{View\+Image} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{View\+Image@{View\+Image}!getcam\+Check\+Flag@{getcam\+Check\+Flag}}
+\index{getcam\+Check\+Flag@{getcam\+Check\+Flag}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{getcam\+Check\+Flag()}{getcamCheckFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool View\+Image\+::getcam\+Check\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_aa598e832e3edf78bfe9fa2ffff922bd7}{}\label{classViewImage_aa598e832e3edf78bfe9fa2ffff922bd7}
+
+
+Function to check camera status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!getimg\+Received\+Flag@{getimg\+Received\+Flag}}
+\index{getimg\+Received\+Flag@{getimg\+Received\+Flag}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{getimg\+Received\+Flag()}{getimgReceivedFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool View\+Image\+::getimg\+Received\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_a6cff5068af16e2fc3527f75cc29af79e}{}\label{classViewImage_a6cff5068af16e2fc3527f75cc29af79e}
+
+
+Function to check status of received image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!getpic\+Saved\+Flag@{getpic\+Saved\+Flag}}
+\index{getpic\+Saved\+Flag@{getpic\+Saved\+Flag}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{getpic\+Saved\+Flag()}{getpicSavedFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool View\+Image\+::getpic\+Saved\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_a1747ed0dfbc89fbea8e1d865c5786c41}{}\label{classViewImage_a1747ed0dfbc89fbea8e1d865c5786c41}
+
+
+Function to check status of saved picture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!image\+Callback@{image\+Callback}}
+\index{image\+Callback@{image\+Callback}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{image\+Callback(const sensor\+\_\+msgs\+::\+Image\+Const\+Ptr \&img)}{imageCallback(const sensor_msgs::ImageConstPtr &img)}}]{\setlength{\rightskip}{0pt plus 5cm}void View\+Image\+::image\+Callback (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Image\+Const\+Ptr \&}]{img}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_ac13c93f43b68aa64cfe0d62bd2afbfd2}{}\label{classViewImage_ac13c93f43b68aa64cfe0d62bd2afbfd2}
+
+
+Callback function that will get called when a new image has arrived on the \char`\"{}camera/image\char`\"{} topic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pointer} & to the image data received on sensor\+\_\+msgs topic \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!setcam\+Check\+Flag@{setcam\+Check\+Flag}}
+\index{setcam\+Check\+Flag@{setcam\+Check\+Flag}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{setcam\+Check\+Flag()}{setcamCheckFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}void View\+Image\+::setcam\+Check\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_abaabe650dbbe820aedfd43993a30ede7}{}\label{classViewImage_abaabe650dbbe820aedfd43993a30ede7}
+
+
+Function to set camera status flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!setimg\+Received\+Flag@{setimg\+Received\+Flag}}
+\index{setimg\+Received\+Flag@{setimg\+Received\+Flag}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{setimg\+Received\+Flag()}{setimgReceivedFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}void View\+Image\+::setimg\+Received\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_a3ca482c5f91db23474d690c603c13b1c}{}\label{classViewImage_a3ca482c5f91db23474d690c603c13b1c}
+
+
+Function to set received image status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!setpic\+Saved\+Flag@{setpic\+Saved\+Flag}}
+\index{setpic\+Saved\+Flag@{setpic\+Saved\+Flag}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{setpic\+Saved\+Flag()}{setpicSavedFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}void View\+Image\+::setpic\+Saved\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_afd3a1cb064bae769a8e91e53692a0220}{}\label{classViewImage_afd3a1cb064bae769a8e91e53692a0220}
+
+
+Function to set saved picture status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{View\+Image@{View\+Image}!take\+Pic@{take\+Pic}}
+\index{take\+Pic@{take\+Pic}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{take\+Pic(acme\+\_\+explorer\+::\+Snap\+::\+Request \&req, acme\+\_\+explorer\+::\+Snap\+::\+Response \&resp)}{takePic(acme_explorer::Snap::Request &req, acme_explorer::Snap::Response &resp)}}]{\setlength{\rightskip}{0pt plus 5cm}bool View\+Image\+::take\+Pic (
+\begin{DoxyParamCaption}
+\item[{acme\+\_\+explorer\+::\+Snap\+::\+Request \&}]{req, }
+\item[{acme\+\_\+explorer\+::\+Snap\+::\+Response \&}]{resp}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_a6382f6a3ce6dfe80c9846bb74c570f7f}{}\label{classViewImage_a6382f6a3ce6dfe80c9846bb74c570f7f}
+
+
+Function to click a picture when the Snap service is called. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{View\+Image@{View\+Image}!view\+Img@{view\+Img}}
+\index{view\+Img@{view\+Img}!View\+Image@{View\+Image}}
+\subsubsection[{\texorpdfstring{view\+Img()}{viewImg()}}]{\setlength{\rightskip}{0pt plus 5cm}void View\+Image\+::view\+Img (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classViewImage_af15c58845d674897313ba7e8247965e4}{}\label{classViewImage_af15c58845d674897313ba7e8247965e4}
+
+
+Function for video surveillance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/akash/\+E\+N\+P\+M808\+X\+\_\+\+R\+O\+S\+\_\+workspace/src/acme\+\_\+explorer/include/View\+Image.\+hpp\item 
+/home/akash/\+E\+N\+P\+M808\+X\+\_\+\+R\+O\+S\+\_\+workspace/src/acme\+\_\+explorer/src/View\+Image.\+cpp\end{DoxyCompactItemize}

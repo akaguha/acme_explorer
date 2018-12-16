@@ -1,0 +1,302 @@
+\hypertarget{classNavigate}{}\section{Navigate Class Reference}
+\label{classNavigate}\index{Navigate@{Navigate}}
+
+
+\hyperlink{classNavigate}{Navigate} class for autonomous navigation and obstacle avoidance.  
+
+
+
+
+{\ttfamily \#include $<$Navigate.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNavigate_a50311e85cf90e124f2bc254e8a656d2a}{Navigate} (ros\+::\+Node\+Handle \&nh)
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classNavigate}{Navigate} class. \end{DoxyCompactList}\item 
+\hyperlink{classNavigate_a317644b5d983dae7ec3fcb6298ee0f39}{$\sim$\+Navigate} ()
+\begin{DoxyCompactList}\small\item\em Default destructor for \hyperlink{classNavigate}{Navigate} class. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_aca18fbf7e83ce73fe6109476a168a164}{setnav\+Check\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to set navigation status flag. \end{DoxyCompactList}\item 
+bool \hyperlink{classNavigate_ae6e9f93c97a258e45c3bc699aba51c78}{getnav\+Check\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to check navigation node status. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_a81460d33e93df93c9ce9b5497c661a37}{setobs\+Detected\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to set obstacle detected flag. \end{DoxyCompactList}\item 
+bool \hyperlink{classNavigate_ac8788261266286b567d4c8cda8b8da91}{getobs\+Detected\+Flag} ()
+\begin{DoxyCompactList}\small\item\em Function to check obstacle detected flag. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_a1e529a8e0a14d0a9537f446736014163}{explore} ()
+\begin{DoxyCompactList}\small\item\em Function to explore the unknown environment. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_aaadf67ae524807fbfdaa8c5972e6c4dd}{move\+Forward} ()
+\begin{DoxyCompactList}\small\item\em Function to command the bot to move forward. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_a10d11870d9f3a4a53dff0557e6abf266}{turn} ()
+\begin{DoxyCompactList}\small\item\em Function to command the bot to keep rotating. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_a1a1857da4250c5fec16c14d9ac9506bc}{scan\+Call\+Back} (const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&scan)
+\begin{DoxyCompactList}\small\item\em Callback function that will get called when a new laser scan data is available. \end{DoxyCompactList}\item 
+bool \hyperlink{classNavigate_a1f62e5c7ea322422c3119f0f6cea540c}{obstacle\+Detected} ()
+\begin{DoxyCompactList}\small\item\em Function to set or clear the obstacle flag. \end{DoxyCompactList}\item 
+geometry\+\_\+msgs\+::\+Twist \hyperlink{classNavigate_a7dfcd82d5a92c144fb72a72b9dd115c2}{get\+Velocity} ()
+\begin{DoxyCompactList}\small\item\em Function to get the velocity value. \end{DoxyCompactList}\item 
+void \hyperlink{classNavigate_ac3aec357be1bb612cc75e63f61d154c1}{turn\+Callback} (const ros\+::\+Timer\+Event \&)
+\begin{DoxyCompactList}\small\item\em Timer callback function. Gets called at a specified rate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classNavigate}{Navigate} class for autonomous navigation and obstacle avoidance. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Navigate@{Navigate}!Navigate@{Navigate}}
+\index{Navigate@{Navigate}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{Navigate(ros\+::\+Node\+Handle \&nh)}{Navigate(ros::NodeHandle &nh)}}]{\setlength{\rightskip}{0pt plus 5cm}Navigate\+::\+Navigate (
+\begin{DoxyParamCaption}
+\item[{ros\+::\+Node\+Handle \&}]{nh}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classNavigate_a50311e85cf90e124f2bc254e8a656d2a}{}\label{classNavigate_a50311e85cf90e124f2bc254e8a656d2a}
+
+
+Default constructor for \hyperlink{classNavigate}{Navigate} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & handle as nh \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!````~Navigate@{$\sim$\+Navigate}}
+\index{````~Navigate@{$\sim$\+Navigate}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{$\sim$\+Navigate()}{~Navigate()}}]{\setlength{\rightskip}{0pt plus 5cm}Navigate\+::$\sim$\+Navigate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a317644b5d983dae7ec3fcb6298ee0f39}{}\label{classNavigate_a317644b5d983dae7ec3fcb6298ee0f39}
+
+
+Default destructor for \hyperlink{classNavigate}{Navigate} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{Navigate@{Navigate}!explore@{explore}}
+\index{explore@{explore}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{explore()}{explore()}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::explore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a1e529a8e0a14d0a9537f446736014163}{}\label{classNavigate_a1e529a8e0a14d0a9537f446736014163}
+
+
+Function to explore the unknown environment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!getnav\+Check\+Flag@{getnav\+Check\+Flag}}
+\index{getnav\+Check\+Flag@{getnav\+Check\+Flag}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{getnav\+Check\+Flag()}{getnavCheckFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Navigate\+::getnav\+Check\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_ae6e9f93c97a258e45c3bc699aba51c78}{}\label{classNavigate_ae6e9f93c97a258e45c3bc699aba51c78}
+
+
+Function to check navigation node status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!getobs\+Detected\+Flag@{getobs\+Detected\+Flag}}
+\index{getobs\+Detected\+Flag@{getobs\+Detected\+Flag}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{getobs\+Detected\+Flag()}{getobsDetectedFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Navigate\+::getobs\+Detected\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_ac8788261266286b567d4c8cda8b8da91}{}\label{classNavigate_ac8788261266286b567d4c8cda8b8da91}
+
+
+Function to check obstacle detected flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!get\+Velocity@{get\+Velocity}}
+\index{get\+Velocity@{get\+Velocity}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{get\+Velocity()}{getVelocity()}}]{\setlength{\rightskip}{0pt plus 5cm}geometry\+\_\+msgs\+::\+Twist Navigate\+::get\+Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a7dfcd82d5a92c144fb72a72b9dd115c2}{}\label{classNavigate_a7dfcd82d5a92c144fb72a72b9dd115c2}
+
+
+Function to get the velocity value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+velocity as geometry\+\_\+msgs\+::\+Twist 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!move\+Forward@{move\+Forward}}
+\index{move\+Forward@{move\+Forward}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{move\+Forward()}{moveForward()}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::move\+Forward (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_aaadf67ae524807fbfdaa8c5972e6c4dd}{}\label{classNavigate_aaadf67ae524807fbfdaa8c5972e6c4dd}
+
+
+Function to command the bot to move forward. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!obstacle\+Detected@{obstacle\+Detected}}
+\index{obstacle\+Detected@{obstacle\+Detected}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{obstacle\+Detected()}{obstacleDetected()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Navigate\+::obstacle\+Detected (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a1f62e5c7ea322422c3119f0f6cea540c}{}\label{classNavigate_a1f62e5c7ea322422c3119f0f6cea540c}
+
+
+Function to set or clear the obstacle flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!scan\+Call\+Back@{scan\+Call\+Back}}
+\index{scan\+Call\+Back@{scan\+Call\+Back}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{scan\+Call\+Back(const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&scan)}{scanCallBack(const sensor_msgs::LaserScan::ConstPtr &scan)}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::scan\+Call\+Back (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&}]{scan}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a1a1857da4250c5fec16c14d9ac9506bc}{}\label{classNavigate_a1a1857da4250c5fec16c14d9ac9506bc}
+
+
+Callback function that will get called when a new laser scan data is available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pointer} & to the laser scan data received on sensor\+\_\+msgs topic \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!setnav\+Check\+Flag@{setnav\+Check\+Flag}}
+\index{setnav\+Check\+Flag@{setnav\+Check\+Flag}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{setnav\+Check\+Flag()}{setnavCheckFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::setnav\+Check\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_aca18fbf7e83ce73fe6109476a168a164}{}\label{classNavigate_aca18fbf7e83ce73fe6109476a168a164}
+
+
+Function to set navigation status flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!setobs\+Detected\+Flag@{setobs\+Detected\+Flag}}
+\index{setobs\+Detected\+Flag@{setobs\+Detected\+Flag}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{setobs\+Detected\+Flag()}{setobsDetectedFlag()}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::setobs\+Detected\+Flag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a81460d33e93df93c9ce9b5497c661a37}{}\label{classNavigate_a81460d33e93df93c9ce9b5497c661a37}
+
+
+Function to set obstacle detected flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!turn@{turn}}
+\index{turn@{turn}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{turn()}{turn()}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::turn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_a10d11870d9f3a4a53dff0557e6abf266}{}\label{classNavigate_a10d11870d9f3a4a53dff0557e6abf266}
+
+
+Function to command the bot to keep rotating. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nothing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Navigate@{Navigate}!turn\+Callback@{turn\+Callback}}
+\index{turn\+Callback@{turn\+Callback}!Navigate@{Navigate}}
+\subsubsection[{\texorpdfstring{turn\+Callback(const ros\+::\+Timer\+Event \&)}{turnCallback(const ros::TimerEvent &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Navigate\+::turn\+Callback (
+\begin{DoxyParamCaption}
+\item[{const ros\+::\+Timer\+Event \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classNavigate_ac3aec357be1bb612cc75e63f61d154c1}{}\label{classNavigate_ac3aec357be1bb612cc75e63f61d154c1}
+
+
+Timer callback function. Gets called at a specified rate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & ros\+::\+Timer\+Event\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/akash/\+E\+N\+P\+M808\+X\+\_\+\+R\+O\+S\+\_\+workspace/src/acme\+\_\+explorer/include/Navigate.\+hpp\item 
+/home/akash/\+E\+N\+P\+M808\+X\+\_\+\+R\+O\+S\+\_\+workspace/src/acme\+\_\+explorer/src/Navigate.\+cpp\end{DoxyCompactItemize}
