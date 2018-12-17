@@ -43,7 +43,16 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
-# API and Other Developer Documentation
+# Developer Documentation
+Presentation Video [here][reference-id-for-here3]
+
+Demonstartion Video [here][reference-id-for-here4]
+
+Presentation slides [here][reference-id-for-here5]
+
+[reference-id-for-here3]: https://youtu.be/ygLYC8p_UiA
+[reference-id-for-here4]: https://youtu.be/ApUlHb9K4a8
+[reference-id-for-here5]: https://docs.google.com/presentation/d/1MOghZV7XjfJePHzY1ks5cpqPwnqgvIrbDplqEJCKQn4/edit?usp=sharing
 
 ## Solo Iterative Process
 SIP is a software process that single programmers use while working on a software project. The solo programmer who is the hero of this process is named “Sol”. Sol receives the requirements from the users and records them in the product backlog. From the iteration backlog, Sol selects a specific change request and implements the corresponding software changes. 
@@ -82,7 +91,9 @@ On initialization, the robot rotates on the spot to get an initial understanding
 
 Video captured by the onboard camera is viewed in a seperate window. This is part of the surveillance functionality of the robot. At any point in time the snapshot service can be called to click and save the image of the environment.
 
-This process is represented in the given activity diagram
+This process is represented in the activity diagram
+
+![](images/5.jpg)
 
 # Build Instructions
 Create and build a catkin workspace.
@@ -126,11 +137,18 @@ Initial setup: To bring up the turtlebot in an unknown environment, start gmappi
 ```
 roslaunch acme_explorer setup.launch
 ```
+
+![](images/1.png)
+
+![](images/2.png)
+
 Then to run the acme_explorer package launch the following file
 ```
 roslaunch acme_explorer acmeExplorerLaunch.launch
 ```
 Now the turtlebot starts exploring the environment and a small surveillance window opens
+
+![](images/3.png)
 
 To take a snapshot of the environment at any point of time call the /snap service and pass the file name as an argument. Below TestImg1 is the file name to save the picture
 ```
@@ -141,6 +159,8 @@ After you are satisfied with the map generated, run the following command to sav
 rosrun map_server map_saver -f /home/akash/ENPM808X_ROS_workspace/src/acme_explorer/custom_maps/shapeWorldSLAM_
 
 ```
+![](images/4.png)
+
 # Rosbag record/playback
 To run the demo and record rosbag file in the results folder
 ```
@@ -173,6 +193,13 @@ doxygen <config_file_name>
 ```
 
 # Testing Code Coverage
+The current coverage for the project is 92.5%. Run the following steps
+```
+cd ~/catkin_ws/build
+lcov --directory . --capture --output-file coverage.info
+sudo lcov --remove coverage.info '/opt/*' '/usr/*' '*/devel/*' '*test_*' '*_test*' --output-file coverage.info
+lcov --list coverage.info
+```
 
 # About Me
 I am a second-year graduate student, majoring in Robotics at University of Maryland College Park. I completed my undergraduation in Electronics and Telecommunication from University of Pune, India in May 2013. Since then I have worked as an Application Development Analyst at Accenture India for 3 years followed by 6 months as a Robotics Engineer at Cereble Robotics, India. My areas of interest are Robotics, Machine Learning, Deep Learning and Computer Vision.
